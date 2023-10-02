@@ -1,0 +1,10 @@
+OUTROOT=/home/rgs1e22/cgenie_output
+CODEDIR=/home/rgs1e22/cgenie.muffin
+RUNTIME_ROOT=../../cgenie.muffin
+RUNTIME_OUTDIR=.
+EXPID=muffin.CB.V21a_097.BASES-2.config
+FIXEDATMOSFILE=data_fixedatmos
+GLIMMERFILE=data_glimmer.config
+igcm_module=genie-igcm
+BFGROOT=EMPTY
+MODULE_NAMES='embm goldstein goldsteinseaice biogem atchem '

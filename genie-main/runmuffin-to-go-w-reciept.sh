@@ -1,7 +1,7 @@
 #!/bin/bash -e
 #
 #####################################################################
-### SCIPT TO RUN ./RUNMUFFIN.SH ON REDHAT HPC #######################
+### SCRIPT TO RUN ./RUNMUFFIN.SH ON REDHAT HPC #######################
 #####################################################################
 module load gcc/6.4.0
 module load gnumake

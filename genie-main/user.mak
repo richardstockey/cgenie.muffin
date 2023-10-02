@@ -74,7 +74,7 @@ MODEXT=mod
 # (http://www.unidata.ucar.edu/packages/netcdf/index.html)
 
 ### DEFAULT ###
-NETCDF_DIR=/usr/local
+#NETCDF_DIR=/usr/local
 ### sterling ###
 #NETCDF_DIR=/share/apps
 ### eevee ###
@@ -89,5 +89,7 @@ NETCDF_DIR=/usr/local
 #NETCDF_DIR=/home/mushroom/netcdf/ifort
 ### Ben Mac Pro ###
 #NETCDF_DIR=/opt/local
+### Iridis/Lyceum (should work for Red Hat HPC facilities generally) ###
+NETCDF_DIR=$(HOME)
 
 NETCDF_NAME=netcdf
