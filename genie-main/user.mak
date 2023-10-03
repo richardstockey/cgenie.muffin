@@ -90,6 +90,6 @@ MODEXT=mod
 ### Ben Mac Pro ###
 #NETCDF_DIR=/opt/local
 ### Iridis/Lyceum (should work for Red Hat HPC facilities generally) ###
-NETCDF_DIR=.
+NETCDF_DIR=/scratch/rgs1e22/cgenie.muffin/genie-main
 
 NETCDF_NAME=netcdf
