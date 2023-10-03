@@ -90,6 +90,6 @@ MODEXT=mod
 ### Ben Mac Pro ###
 #NETCDF_DIR=/opt/local
 ### Iridis/Lyceum (should work for Red Hat HPC facilities generally) ###
-NETCDF_DIR=$(HOME)
+NETCDF_DIR=.
 
 NETCDF_NAME=netcdf

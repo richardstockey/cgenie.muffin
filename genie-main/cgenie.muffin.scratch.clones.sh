@@ -12,7 +12,12 @@
 
 for clone in $(seq $2)
 do
-[ -d "/scratch/$USER/cgenie.muffin/genie-main-$clone" ] && rm -r /scratch/$USER/cgenie.muffin/cgenie.muffin/genie-main-$clone
+[ -d "/scratch/$USER/cgenie.muffin/genie-main-$clone" ] && rm -r /scratch/$USER/cgenie.muffin/genie-main-$clone
 svn checkout https://github.com/$1/cgenie.muffin/trunk/genie-main /scratch/$USER/cgenie.muffin/genie-main-$clone
+cd /scratch/$USER/cgenie.muffin/genie-main-$clone
+grep -l -r 'genie-main' | xargs sed -i "s/genie-main/genie-main-$clone/g"
+cd ~/cgenie.install.stuff
+./netcdf.downloads.sh
+cd /home/$USER/
 echo "cgenie.muffin/genie-main-$clone created"
 done
