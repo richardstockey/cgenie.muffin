@@ -5,14 +5,14 @@
 ### N TIMES TO SCRATCH ON REDHAT HPC
 #####################################################################
 
-# input variable $1 github directory to clone as URL
+# input variable $1 github user - assuming that genie-main sits in https://github.com/[user]/cgenie.muffin/trunk/genie-main
 # input variable $2 number of times to clone
-# should be run like: ./cgenie.muffin.scratch.sh https://github.com/derpycode/cgenie.muffin.git 40
+# should be run like: ./cgenie.muffin.scratch.clones.sh richardstockey 40
 # will need to change permissions using chmod +x ~/cgenie.muffin/genie-main/cgenie.muffin.scratch.clones.sh
 
 for clone in $(seq $2)
 do
-[ -d "/scratch/$USER/cgenie.muffins/cgenie.muffin.clone.$clone" ] && rm -r /scratch/$USER/cgenie.muffins/cgenie.muffin.clone.$clone
-git clone $1 /scratch/$USER/cgenie.muffins/cgenie.muffin.clone.$clone
-echo "cgenie.muffin.clone.$clone created"
+[ -d "/scratch/$USER/cgenie.muffin/genie-main-$clone" ] && rm -r /scratch/$USER/cgenie.muffin/cgenie.muffin/genie-main-$clone
+svn checkout https://github.com/$1/cgenie.muffin/trunk/genie-main /scratch/$USER/cgenie.muffin/genie-main-$clone
+echo "cgenie.muffin/genie-main-$clone created"
 done
