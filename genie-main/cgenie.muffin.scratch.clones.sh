@@ -16,6 +16,12 @@ do
 svn checkout https://github.com/$1/cgenie.muffin/trunk/genie-main /scratch/$USER/cgenie.muffin/genie-main-$clone
 cd /scratch/$USER/cgenie.muffin/genie-main-$clone
 grep -l -r 'genie-main' | xargs sed -i "s/genie-main/genie-main-$clone/g"
+[ -d "/scratch/$USER/cgenie.muffin/genie-lib-$clone" ] && rm -r /scratch/$USER/cgenie.muffin/genie-lib-$clone
+svn checkout https://github.com/$1/cgenie.muffin/trunk/genie-lib /scratch/$USER/cgenie.muffin/genie-lib-$clone
+grep -l -r 'genie-lib' | xargs sed -i "s/genie-main/genie-lib-$clone/g"
+[ -d "/scratch/$USER/cgenie.muffin/genie-plasim-$clone" ] && rm -r /scratch/$USER/cgenie.muffin/genie-plasim-$clone
+svn checkout https://github.com/$1/cgenie.muffin/trunk/genie-plasim /scratch/$USER/cgenie.muffin/genie-plasim-$clone
+grep -l -r 'genie-plasim' | xargs sed -i "s/genie-main/genie-plasim-$clone/g"
 cd ~/genie.install.stuff
 ./netcdf.libraries.install.sh $clone
 cd /home/$USER/
