@@ -7,7 +7,7 @@
 
 # input variable $1 github user - assuming that genie-main sits in https://github.com/[user]/cgenie.muffin/trunk/genie-main
 # input variable $2 number of times to clone
-# should be run like: ./cgenie.muffin.scratch.clones.sh richardstockey 40
+# should be run like: ./cgenie.muffin.scratch.clones.new.sh richardstockey 40
 # will need to change permissions using chmod +x ~/cgenie.muffin/genie-main/cgenie.muffin.scratch.clones.sh
 
 ## Change log
