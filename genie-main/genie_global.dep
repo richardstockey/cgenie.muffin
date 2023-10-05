@@ -1,1 +1,0 @@
-genie_global.o genie_global.dep : genie_global.f90 
