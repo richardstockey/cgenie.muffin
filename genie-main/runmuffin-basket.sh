@@ -67,7 +67,6 @@ do
 # could eventually update this in the future for mixed plasim runs, gemlite runs, etc.
 
 # set seconds to sleep before running each cGENIE job so that they don't interfere with each other. The 5 represents 5 mins. 
-secs=$((i*10*60))
 # need to adapt the printf command to read in from ls
 printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
