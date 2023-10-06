@@ -34,7 +34,14 @@ LD_LIBRARY_PATH=$HOME/lib
 export LD_LIBRARY_PATH
 
 short_name=$(echo $2 | sed 's:.*/::')
+# Assume all experiments in ensemble have same number of iterations
+# just check the first directory alphabetically
+first_dir=(ls ~/cgenie.muffin/genie-userconfigs/$2 | head -1)
+iterations=$(find /home/$USER/cgenie.muffin/genie-userconfigs/$2/$first_dir -name "*.config" | wc -l)
 iteration="1"
+
+for iteration in $(seq $iterations)
+do 
 
 # for all batch files we start with the same code here... 
 printf "#!/bin/sh
@@ -66,19 +73,46 @@ do
 # all runs should be the same duration at this stage.
 # could eventually update this in the future for mixed plasim runs, gemlite runs, etc.
 
-# set seconds to sleep before running each cGENIE job so that they don't interfere with each other. The 5 represents 5 mins. 
-secs=$((i*10*60))
-# need to adapt the printf command to read in from ls
+if [ $iteration -eq 1]
+then # first experiment doesnt necessarily start from a restart (need to build in this option though)
 printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+else # subsequent experiments all start from a restart
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+"  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+fi
 i=$((i+1))
 done 
 
 # take the final ampersand away!
 truncate -s -2 ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 
-#sbatch ~/cgenie.jobs/muffin-basket-test.sbatch > ~/cgenie.jobs/muffin-basket-test-job.txt
- #rm ~/cgenie.jobs/muffin-to-go.sbatch
+if [ $iteration -lt $iterations]
+then
+# now add to the script that we want to wait for all background jobs to finish before continuing
+printf "wait
+while [ $(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +5| wc -l) -lt $i ]
+do 
+echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
+sleep 60
+continue
+done
+sbatch ~/cgenie.jobs/muffin-basket-$short_name-$((iteration + 1)).sbatch
+"  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+fi
 
-#job_id=`grep -Eo '[0-9\.]+' ~/cgenie.jobs/muffin-basket-test-job.txt`
-#echo $job_id
+# finish iterations loop 
+done
+
+# see if there are free cgenie.muffin-*/genie-main clones to initiate experiments from
+# if not, wait a minute and check again...
+# don't submit job until there are...
+while [ $(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +5| wc -l) -lt $i ]
+do 
+echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
+sleep 60
+continue
+done
+# set first .sbatch script running within this shell script
+# next ones are set running by the previous sbatch file. 
+#sbatch ~/cgenie.jobs/muffin-basket-$short_name-1.sbatch
