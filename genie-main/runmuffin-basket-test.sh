@@ -36,7 +36,7 @@ export LD_LIBRARY_PATH
 short_name=$(echo $2 | sed 's:.*/::')
 # Assume all experiments in ensemble have same number of iterations
 # just check the first directory alphabetically
-first_dir=(ls ~/cgenie.muffin/genie-userconfigs/$2 | head -1)
+first_dir=$(ls ~/cgenie.muffin/genie-userconfigs/$2 | head -1)
 iterations=$(find /home/$USER/cgenie.muffin/genie-userconfigs/$2/$first_dir -name "*.config" | wc -l)
 iteration="1"
 
