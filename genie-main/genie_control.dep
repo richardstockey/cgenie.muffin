@@ -1,1 +1,0 @@
-genie_control.o genie_control.dep : genie_control.f90 
