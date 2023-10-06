@@ -23,7 +23,7 @@ do
 git clone https://github.com/$1/cgenie.muffin/ /scratch/$USER/cgenie.muffin-$clone
 
 
-# change names in cgenie.muffin-1
+# change names in cgenie.muffin-x
 cd /scratch/$USER/cgenie.muffin-$clone
 grep -l -r 'cgenie.muffin' --exclude-dir='.git' | xargs sed -i "s/cgenie.muffin/cgenie.muffin-$clone/g"
 

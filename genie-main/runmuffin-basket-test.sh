@@ -73,7 +73,7 @@ do
 # all runs should be the same duration at this stage.
 # could eventually update this in the future for mixed plasim runs, gemlite runs, etc.
 
-if [ $iteration -eq 1]
+if [ $iteration -eq 1 ]
 then # first experiment doesnt necessarily start from a restart (need to build in this option though)
 printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
@@ -87,16 +87,24 @@ done
 # take the final ampersand away!
 truncate -s -2 ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 
-if [ $iteration -lt $iterations]
+# if youre anuything but the final run, add code to start the next sbatch job at the end of this one!
+if [ $iteration -lt $iterations ]
 then
 # now add to the script that we want to wait for all background jobs to finish before continuing
-printf "wait
-while [ $(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +5| wc -l) -lt $i ]
+printf '
+
+wait
+
+ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
+while [ $ready_clones -lt $i ]
 do 
 echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
 sleep 60
 continue
-done
+done' >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+# Swapping between '' and "" so that variables are pasted in rather than the code refering to variables being pasted in
+# Sure there is a more elegant way of doing this but this works fine...
+printf "
 sbatch ~/cgenie.jobs/muffin-basket-$short_name-$((iteration + 1)).sbatch
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
@@ -107,7 +115,8 @@ done
 # see if there are free cgenie.muffin-*/genie-main clones to initiate experiments from
 # if not, wait a minute and check again...
 # don't submit job until there are...
-while [ $(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +5| wc -l) -lt $i ]
+ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
+while [ $ready_clones -lt $i ]
 do 
 echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
 sleep 60
@@ -115,4 +124,4 @@ continue
 done
 # set first .sbatch script running within this shell script
 # next ones are set running by the previous sbatch file. 
-#sbatch ~/cgenie.jobs/muffin-basket-$short_name-1.sbatch
+sbatch ~/cgenie.jobs/muffin-basket-$short_name-1.sbatch
