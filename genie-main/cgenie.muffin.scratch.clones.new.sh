@@ -11,6 +11,12 @@
 # will need to change permissions using chmod +x ~/cgenie.muffin/genie-main/cgenie.muffin.scratch.clones.sh
 module load gcc/6.4.0
 module load gnumake
+module load git 
+
+[ -d "/scratch/$USER/cgenie.muffin" ] && rm -rf /scratch/$USER/cgenie.muffin
+
+# git clone
+git clone https://github.com/$1/cgenie.muffin/ /scratch/$USER/cgenie.muffin
 
 ## Change log
 # 20231004 - reorder so that checkouts come first then changing all the names comes next...
@@ -19,9 +25,7 @@ do
 ## Clean up
 [ -d "/scratch/$USER/cgenie.muffin-$clone" ] && rm -rf /scratch/$USER/cgenie.muffin-$clone
 
-# git clone
-git clone https://github.com/$1/cgenie.muffin/ /scratch/$USER/cgenie.muffin-$clone
-
+cp -R /scratch/$USER/cgenie.muffin /scratch/$USER/cgenie.muffin-$clone
 
 # change names in cgenie.muffin-x
 cd /scratch/$USER/cgenie.muffin-$clone

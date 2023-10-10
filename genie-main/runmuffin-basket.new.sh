@@ -61,7 +61,7 @@ export LD_LIBRARY_PATH
 cd ~/cgenie.muffin/genie-main
 " > ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 
-i=0
+i=1
 for line in $(ls ~/cgenie.muffin/genie-userconfigs/$2)
 do
 # for each line, we get an experiment with multiple restarts
@@ -87,13 +87,16 @@ done
 # take the final ampersand away!
 truncate -s -2 ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 
+printf '
+
+wait
+' >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+
 # if youre anuything but the final run, add code to start the next sbatch job at the end of this one!
 if [ $iteration -lt $iterations ]
 then
 # now add to the script that we want to wait for all background jobs to finish before continuing
 printf '
-
-wait
 
 ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
 while [ $ready_clones -lt $i ]
@@ -115,8 +118,9 @@ done
 # see if there are free cgenie.muffin-*/genie-main clones to initiate experiments from
 # if not, wait a minute and check again...
 # don't submit job until there are...
+# NOTE - maybe this should really sit at the top of the sbatch scripts rather than down here??
 ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
-while [ $ready_clones -lt $i ]
+while [ $ready_clones -lt 40 ]
 do 
 echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
 sleep 60

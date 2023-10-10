@@ -1,0 +1,2223 @@
+Running SLURM prolog script on red161.cluster.local
+===============================================================================
+Job started on Fri Oct  6 21:19:56 BST 2023
+Job ID          : 4852827
+Job name        : muffin-basket-HADCM3L_16lvl_b2-3-1.sbatch
+WorkDir         : /mainfs/home/rgs1e22/cgenie.muffin/genie-main
+Command         : /home/rgs1e22/cgenie.jobs/muffin-basket-HADCM3L_16lvl_b2-3-1.sbatch
+Partition       : batch
+Num hosts       : 1
+Num cores       : 40
+Num of tasks    : 40
+Hosts allocated : red161
+Job Output Follows ...
+===============================================================================
+
+Modules based on Lua: Version 8.2.7  2019-11-30 09:41 -06:00
+    by Robert McLay mclay@tacc.utexas.edu
+
+module [options] sub-command [args ...]
+
+Help sub-commands:
+------------------
+  help                              prints this message
+  help                module [...]  print help message from module(s)
+
+Loading/Unloading sub-commands:
+-------------------------------
+  load | add          module [...]  load module(s)
+  try-load | try-add  module [...]  Add module(s), do not complain if not
+                                    found
+  del | unload        module [...]  Remove module(s), do not complain if not
+                                    found
+  swap | sw | switch  m1 m2         unload m1 and load m2
+  purge                             unload all modules
+  refresh                           reload aliases from current list of
+                                    modules.
+  update                            reload all currently loaded modules.
+
+Listing / Searching sub-commands:
+---------------------------------
+  list                              List loaded modules
+  list                s1 s2 ...     List loaded modules that match the
+                                    pattern
+  avail | av                        List available modules
+  avail | av          string        List available modules that contain
+                                    "string".
+  spider                            List all possible modules
+  spider              module        List all possible version of that module
+                                    file
+  spider              string        List all module that contain the
+                                    "string".
+  spider              name/version  Detailed information about that version
+                                    of the module.
+  whatis              module        Print whatis information about module
+  keyword | key       string        Search all name and whatis that contain
+                                    "string".
+
+Searching with Lmod:
+--------------------
+  All searching (spider, list, avail, keyword) support regular expressions:
+  
+
+  -r spider           '^p'          Finds all the modules that start with
+                                    `p' or `P'
+  -r spider           mpi           Finds all modules that have "mpi" in
+                                    their name.
+  -r spider           'mpi$         Finds all modules that end with "mpi" in
+                                    their name.
+
+Handling a collection of modules:
+--------------------------------
+  save | s                          Save the current list of modules to a
+                                    user defined "default" collection.
+  save | s            name          Save the current list of modules to
+                                    "name" collection.
+  reset                             The same as "restore system"
+  restore | r                       Restore modules from the user's
+                                    "default" or system default.
+  restore | r         name          Restore modules from "name" collection.
+  restore             system        Restore module state to system defaults.
+  savelist                          List of saved collections.
+  describe | mcc      name          Describe the contents of a module
+                                    collection.
+  disable             name          Disable (i.e. remove) a collection.
+
+Deprecated commands:
+--------------------
+  getdefault          [name]        load name collection of modules or
+                                    user's "default" if no name given.
+                                    ===> Use "restore" instead <====
+  setdefault          [name]        Save current list of modules to name if
+                                    given, otherwise save as the default
+                                    list for you the user.
+                                    ===> Use "save" instead. <====
+
+Miscellaneous sub-commands:
+---------------------------
+  is-loaded           modulefile    return a true status if module is loaded
+  is-avail            modulefile    return a true status if module can be
+                                    loaded
+  show                modulefile    show the commands in the module file.
+  use [-a]            path          Prepend or Append path to MODULEPATH.
+  unuse               path          remove path from MODULEPATH.
+  tablelist                         output list of active modules as a lua
+                                    table.
+
+Important Environment Variables:
+--------------------------------
+  LMOD_COLORIZE                     If defined to be "YES" then Lmod prints
+                                    properties and warning in color.
+
+    --------------------------------------------------------------------------
+
+Lmod Web Sites
+
+  Documentation:    http://lmod.readthedocs.org
+  Github:           https://github.com/TACC/Lmod
+  Sourceforge:      https://lmod.sf.net
+  TACC Homepage:    https://www.tacc.utexas.edu/research-development/tacc-projects/lmod
+
+  To report a bug please read http://lmod.readthedocs.io/en/latest/075_bug_reporting.html
+    --------------------------------------------------------------------------
+
+
+
+Modules based on Lua: Version 8.2.7  2019-11-30 09:41 -06:00
+    by Robert McLay mclay@tacc.utexas.edu
+
+module [options] sub-command [args ...]
+
+Help sub-commands:
+------------------
+  help                              prints this message
+  help                module [...]  print help message from module(s)
+
+Loading/Unloading sub-commands:
+-------------------------------
+  load | add          module [...]  load module(s)
+  try-load | try-add  module [...]  Add module(s), do not complain if not
+                                    found
+  del | unload        module [...]  Remove module(s), do not complain if not
+                                    found
+  swap | sw | switch  m1 m2         unload m1 and load m2
+  purge                             unload all modules
+  refresh                           reload aliases from current list of
+                                    modules.
+  update                            reload all currently loaded modules.
+
+Listing / Searching sub-commands:
+---------------------------------
+  list                              List loaded modules
+  list                s1 s2 ...     List loaded modules that match the
+                                    pattern
+  avail | av                        List available modules
+  avail | av          string        List available modules that contain
+                                    "string".
+  spider                            List all possible modules
+  spider              module        List all possible version of that module
+                                    file
+  spider              string        List all module that contain the
+                                    "string".
+  spider              name/version  Detailed information about that version
+                                    of the module.
+  whatis              module        Print whatis information about module
+  keyword | key       string        Search all name and whatis that contain
+                                    "string".
+
+Searching with Lmod:
+--------------------
+  All searching (spider, list, avail, keyword) support regular expressions:
+  
+
+  -r spider           '^p'          Finds all the modules that start with
+                                    `p' or `P'
+  -r spider           mpi           Finds all modules that have "mpi" in
+                                    their name.
+  -r spider           'mpi$         Finds all modules that end with "mpi" in
+                                    their name.
+
+Handling a collection of modules:
+--------------------------------
+  save | s                          Save the current list of modules to a
+                                    user defined "default" collection.
+  save | s            name          Save the current list of modules to
+                                    "name" collection.
+  reset                             The same as "restore system"
+  restore | r                       Restore modules from the user's
+                                    "default" or system default.
+  restore | r         name          Restore modules from "name" collection.
+  restore             system        Restore module state to system defaults.
+  savelist                          List of saved collections.
+  describe | mcc      name          Describe the contents of a module
+                                    collection.
+  disable             name          Disable (i.e. remove) a collection.
+
+Deprecated commands:
+--------------------
+  getdefault          [name]        load name collection of modules or
+                                    user's "default" if no name given.
+                                    ===> Use "restore" instead <====
+  setdefault          [name]        Save current list of modules to name if
+                                    given, otherwise save as the default
+                                    list for you the user.
+                                    ===> Use "save" instead. <====
+
+Miscellaneous sub-commands:
+---------------------------
+  is-loaded           modulefile    return a true status if module is loaded
+  is-avail            modulefile    return a true status if module can be
+                                    loaded
+  show                modulefile    show the commands in the module file.
+  use [-a]            path          Prepend or Append path to MODULEPATH.
+  unuse               path          remove path from MODULEPATH.
+  tablelist                         output list of active modules as a lua
+                                    table.
+
+Important Environment Variables:
+--------------------------------
+  LMOD_COLORIZE                     If defined to be "YES" then Lmod prints
+                                    properties and warning in color.
+
+    --------------------------------------------------------------------------
+
+Lmod Web Sites
+
+  Documentation:    http://lmod.readthedocs.org
+  Github:           https://github.com/TACC/Lmod
+  Sourceforge:      https://lmod.sf.net
+  TACC Homepage:    https://www.tacc.utexas.edu/research-development/tacc-projects/lmod
+
+  To report a bug please read http://lmod.readthedocs.io/en/latest/075_bug_reporting.html
+    --------------------------------------------------------------------------
+
+
+/tmp/slurmd/job4852827/slurm_script: line 16: cd: /scratch/rgs1e22/cgenie.muffin-0/genie-main: No such file or directory
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-4/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-4/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-11/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-11/genie-plasim/lib/libplasim.a' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-13/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-13/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-18/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-18/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-9/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-9/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-15/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-15/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-6/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-6/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-20/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-20/genie-plasim/lib/libplasim.a' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-14/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-14/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-3/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-3/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-10/genie-plasim/' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-10/genie-plasim/lib/libplasim.a' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-22/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-22/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-17/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-17/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-7/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-7/genie-plasim/lib/libplasim.a' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-28/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-28/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-8/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-8/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-24/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-24/genie-plasim/lib/libplasim.a' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-19/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-19/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-16/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-16/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-21/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-21/genie-plasim/lib/libplasim.a' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-26/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-26/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-12/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-12/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-27/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-27/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-1/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-1/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-23/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-23/genie-plasim/lib/libplasim.a' given more than once in the same rule
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-5/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-5/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-main/src/fortran/cmngem'
+makefile:142: target 'clean_plasim' given more than once in the same rule
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-25/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-25/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-main/src/fortran'
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+cd src/c; make clean
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/' given more than once in the same rule
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-main/src/c'
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/lib/libplasim.a' given more than once in the same rule
+cd src/fortran; make -I ../../ clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-14/genie-lib/libnc1; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-main/src/c'
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+cd src/fortran; make -I ../../ clean
+\cd src/fortran/cmngem; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-lib/libnc1; make clean
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-27/genie-lib/libnc1; make clean
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-lib/libnc1: No such file or directory
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+\cd /scratch/rgs1e22/cgenie.muffin-11/genie-lib/libnc1; make clean
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-15/genie-lib/libnc1; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-4/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-4/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+\cd src/fortran/cmngem; make clean
+cd src/c; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-main/src/c'
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+cd src/fortran; make -I ../../ clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-main/src/fortran'
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-lib/libutil1: No such file or directory
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-7/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-7/genie-plasim/lib/libplasim.a' given more than once in the same rule
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-main/src/fortran'
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-lib/libnc1; make clean
+\cd src/fortran/cmngem; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+cd src/c; make clean
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-19/genie-lib/libnc1; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-main/src/fortran'
+cd src/c; make clean
+cd src/c; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+cd src/c; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-4/genie-lib/libnc1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-lib/libnc1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-main/src/c'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+cd src/fortran; make -I ../../ clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-main/src/c'
+cd src/c; make clean
+cd src/fortran; make -I ../../ clean
+cd src/fortran; make -I ../../ clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-goldstein; make clean
+cd src/c; make clean
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-lib/libnc1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-14/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-main/src/fortran'
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-goldstein: No such file or directory
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-main/src/fortran'
+cd src/c; make clean
+cd src/fortran; make -I ../../ clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+\cd /scratch/rgs1e22/cgenie.muffin-7/genie-lib/libnc1; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-6/genie-plasim/' given more than once in the same rule
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-main/src/c'
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-6/genie-plasim/lib/libplasim.a' given more than once in the same rule
+cd src/c; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+cd src/fortran; make -I ../../ clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-main/src/fortran'
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-main/src/c'
+makefile:142: target 'clean_plasim' given more than once in the same rule
+\cd /scratch/rgs1e22/cgenie.muffin-22/genie-lib/libnc1; make clean
+cd src/c; make clean
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+cd src/fortran; make -I ../../ clean
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-main/src/fortran'
+cd src/c; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-21/genie-lib/libnc1; make clean
+cd src/c; make clean
+\cd src/fortran/cmngem; make clean
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-13/genie-lib/libnc1; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-main/src/fortran'
+\cd src/fortran/cmngem; make clean
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-1/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-1/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+cd src/fortran; make -I ../../ clean
+cd src/fortran; make -I ../../ clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-main/src/c'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+cd src/fortran; make -I ../../ clean
+cd src/fortran; make -I ../../ clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+cd src/fortran; make -I ../../ clean
+cd src/fortran; make -I ../../ clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-main/src/fortran'
+\cd src/fortran/cmngem; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-18/genie-lib/libnc1; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-main/src/fortran'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-28/genie-lib/libnc1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-26/genie-lib/libnc1; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-main/src/fortran/cmngem'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+\rm -f *.o genie.exe nccompare *.dep *.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+cd src/c; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-main/src/fortran'
+cd src/fortran; make -I ../../ clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+\cd /scratch/rgs1e22/cgenie.muffin-10/genie-lib/libnc1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-main/src/fortran'
+makefile:142: target 'clean_plasim' given more than once in the same rule
+\cd /scratch/rgs1e22/cgenie.muffin-20/genie-lib/libnc1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-12/genie-lib/libnc1; make clean
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-5/genie-plasim/' given more than once in the same rule
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-5/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd /scratch/rgs1e22/cgenie.muffin-25/genie-lib/libnc1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-16/genie-lib/libnc1; make clean
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-3/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-3/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-main/src/fortran'
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-23/genie-lib/libnc1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-main/src/fortran/cmngem'
+\cd /scratch/rgs1e22/cgenie.muffin-24/genie-lib/libnc1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-17/genie-lib/libnc1; make clean
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-lib/libnc1'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-lib/libnc1'
+cd src/fortran; make -I ../../ clean
+\cd /scratch/rgs1e22/cgenie.muffin-27/genie-lib/libutil1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-11/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-main/src/fortran'
+\cd src/fortran/cmngem; make clean
+cd src/c; make clean
+\cd src/fortran/cmngem; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-14/genie-goldstein; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-main/src/fortran/cmngem'
+\cd /scratch/rgs1e22/cgenie.muffin-9/genie-lib/libnc1; make clean
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin/genie-embm; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-15/genie-lib/libutil1; make clean
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-embm: No such file or directory
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-19/genie-lib/libutil1; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-lib/libutil1'
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-11/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+cd src/c; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+makefile:142: target 'clean_plasim' given more than once in the same rule
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-main/src/fortran'
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd /scratch/rgs1e22/cgenie.muffin-6/genie-lib/libnc1; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+\cd src/fortran/cmngem; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-21/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-lib/libnc1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-18/genie-lib/libutil1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-1/genie-lib/libnc1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-27/genie-goldstein; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-lib/libnc1'
+cd src/fortran; make -I ../../ clean
+\cd /scratch/rgs1e22/cgenie.muffin-13/genie-lib/libutil1; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+cd src/c; make clean
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-16/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-lib/libutil1; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-18/genie-goldstein; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-12/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-25/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-3/genie-lib/libnc1; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+\cd /scratch/rgs1e22/cgenie.muffin-24/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin-8/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin-8/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-lib/libnc1'
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+\cd /scratch/rgs1e22/cgenie.muffin-20/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-lib/libutil1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-16/genie-goldstein; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-17/genie-lib/libutil1; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-lib/libnc1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-7/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-19/genie-goldstein; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-lib/libnc1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-5/genie-lib/libnc1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-10/genie-lib/libutil1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-15/genie-goldstein; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-lib/libnc1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-28/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-lib/libutil1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-25/genie-goldstein; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-plasim; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-lib/libutil1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-21/genie-goldstein; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-plasim: No such file or directory
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-13/genie-goldstein; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-12/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-main/src/fortran/cmngem'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-17/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-goldstein'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-lib/libnc1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-lib/libnc1'
+\cd src/fortran ; make clean
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-9/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-lib/libnc1'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldstein'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-22/genie-lib/libutil1; make clean
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-lib/libutil1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-10/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-goldstein'
+\cd src/fortran ; make clean
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-28/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-lib/libnc1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-lib/libnc1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-main/src/c'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-goldstein'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-23/genie-lib/libutil1; make clean
+\rm -f *.o genie.exe nccompare *.dep *.mod
+\cd /scratch/rgs1e22/cgenie.muffin-26/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-lib/libutil1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldstein'
+\cd src/fortran ; make clean
+cd src/fortran; make -I ../../ clean
+\cd /scratch/rgs1e22/cgenie.muffin-9/genie-goldstein; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-lib/libnc1'
+\cd /scratch/rgs1e22/cgenie.muffin-6/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-lib/libnc1'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-4/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-7/genie-goldstein; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-goldstein'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-lib/libutil1'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-lib/libutil1'
+cd src/fortran; make -I ../../ clean
+\cd /scratch/rgs1e22/cgenie.muffin-24/genie-goldstein; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-20/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-lib/libutil1'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-1/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-8/genie-lib/libnc1; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-23/genie-goldstein; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-goldstein'
+\cd src/fortran ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-4/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldstein'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-goldsteinseaice; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-lib/libutil1'
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-goldsteinseaice: No such file or directory
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-goldstein'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-1/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-lib/libnc1'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldstein/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-lib/libnc1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-5/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldstein'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-goldstein'
+\cd src/fortran ; make clean
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-goldstein'
+\cd src/fortran ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldstein'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-26/genie-goldstein; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-lib/libutil1'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+\cd /scratch/rgs1e22/cgenie.muffin-6/genie-goldstein; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-5/genie-goldstein; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-goldstein'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-lib/libnc1'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-goldstein'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-8/genie-lib/libutil1; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-ents; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-22/genie-goldstein; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-goldstein'
+\cd src/fortran ; make clean
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-ents: No such file or directory
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-goldstein/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-goldstein/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldstein'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-lib/libutil1'
+\cd /scratch/rgs1e22/cgenie.muffin-8/genie-goldstein; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-goldstein'
+cd src/c; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-14/genie-embm; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-25/genie-embm; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-embm; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-13/genie-embm; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-embm'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-atchem; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-atchem: No such file or directory
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-goldstein'
+\cd src/fortran ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-11/genie-embm; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldstein/src/fortran'
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+\cd lib ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-lib/libnc1'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-goldstein/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-goldstein/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-3/genie-lib/libutil1; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-goldstein'
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-embm'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-18/genie-embm; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldstein/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldstein/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-goldstein/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-goldstein/lib'
+rm -f libgoldstein.a
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldstein'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldstein/src/fortran'
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-lib/libutil1'
+\rm -f *.o *.a *__genmod.f90 *__genmod.mod
+\cd lib ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-27/genie-embm; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-goldstein'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldstein/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldstein/lib'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+rm -f libgoldstein.a
+\cd /scratch/rgs1e22/cgenie.muffin-12/genie-embm; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldstein'
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+\cd /scratch/rgs1e22/cgenie.muffin-21/genie-embm; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-17/genie-embm; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-goldstein/lib'
+rm -f libgoldstein.a
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-20/genie-embm; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldstein/lib'
+rm -f libgoldstein.a
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-28/genie-embm; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldstein'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-10/genie-embm; make clean
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-biogem; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-goldstein/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-goldstein/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-lib/libutil1'
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-biogem: No such file or directory
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-3/genie-goldstein; make clean
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-goldstein/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-goldstein/lib'
+rm -f libgoldstein.a
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-goldstein/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-goldstein/lib'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-goldstein'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-15/genie-embm; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-9/genie-embm; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-goldstein'
+\cd src/fortran/cmngem; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-23/genie-embm; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-goldstein'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-embm/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-goldstein/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldstein/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-goldstein/lib'
+cd src/c; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-goldstein'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-19/genie-embm; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-goldstein/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-goldstein'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldstein'
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+\cd /scratch/rgs1e22/cgenie.muffin-16/genie-embm; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-goldstein/lib'
+\cd /scratch/rgs1e22/cgenie.muffin-24/genie-embm; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-goldstein'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+\cd /scratch/rgs1e22/cgenie.muffin-1/genie-embm; make clean
+cd src/fortran; make -I ../../ clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-embm/lib'
+rm -f libembm.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-embm'
+\cd src/fortran ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-plasim; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-sedgem; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-goldstein/lib'
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-sedgem: No such file or directory
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-goldstein'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-goldstein/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-4/genie-embm; make clean
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-goldstein/src/fortran'
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-embm'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldstein/lib'
+rm -f libgoldstein.a
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldstein/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd src/fortran/cmngem; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-22/genie-embm; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-plasim'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-goldstein'
+\cd /scratch/rgs1e22/cgenie.muffin-6/genie-embm; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-goldstein/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+cd src/c; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-goldstein'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-embm'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-26/genie-embm; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-embm'
+\cd src/fortran ; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin/genie-rokgem; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-embm/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-embm/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-embm/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-goldstein/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-embm/src/fortran'
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-rokgem: No such file or directory
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-embm/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-goldstein/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-embm/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-embm/lib'
+rm -f libembm.a
+rm -f libembm.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-goldstein/lib'
+makefile:142: target 'clean_plasim' given more than once in the same rule
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-goldstein'
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-embm/src/fortran'
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd /scratch/rgs1e22/cgenie.muffin-7/genie-embm; make clean
+\cd lib ; make clean
+\cd src/fortran/cmngem; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-embm/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-embm/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-embm/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-embm/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-embm/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-embm/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-embm/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-25/genie-plasim; make clean
+\cd lib ; make clean
+\cd lib ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-21/genie-plasim; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-embm/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-embm/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-embm/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-embm/src/fortran'
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-goldstein'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-embm/lib'
+rm -f libembm.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-embm/lib'
+\cd /scratch/rgs1e22/cgenie.muffin-8/genie-embm; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-embm/lib'
+rm -f libembm.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-embm'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-11/genie-plasim; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-embm/lib'
+rm -f libembm.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-embm/lib'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\cd /scratch/rgs1e22/cgenie.muffin-27/genie-plasim; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-embm/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-embm/lib'
+rm -f libembm.a
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-embm/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-embm'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-embm/lib'
+rm -f libembm.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-embm'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-embm/lib'
+rm -f libembm.a
+\cd /scratch/rgs1e22/cgenie.muffin-28/genie-plasim; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-19/genie-plasim; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-13/genie-plasim; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-embm/lib'
+\cd /scratch/rgs1e22/cgenie.muffin-14/genie-plasim; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-18/genie-plasim; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-10/genie-plasim; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-20/genie-plasim; make clean
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-embm'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-embm/lib'
+rm -f libembm.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-plasim'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-embm/src/fortran'
+\cd src/fortran ; make clean
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-goldstein/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-goldstein'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-embm/lib'
+\cd /scratch/rgs1e22/cgenie.muffin-5/genie-embm; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-embm'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+\cd /scratch/rgs1e22/cgenie.muffin-17/genie-plasim; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-embm/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-embm/lib'
+rm -f libembm.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-23/genie-plasim; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-embm/lib'
+rm -f libembm.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-embm'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-plasim'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-15/genie-plasim; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-embm/lib'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-embm'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-embm'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+\cd /scratch/rgs1e22/cgenie.muffin-24/genie-plasim; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-embm'
+\cd src/fortran ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-embm/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-embm/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-plasim'
+\cd src/fortran ; make clean
+\cd lib ; make clean
+\cd lib ; make clean
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-embm/lib'
+rm -f libembm.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-embm/src/fortran'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+\cd lib ; make clean
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-plasim'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin/genie-ecogem; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-embm/lib'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-plasim'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-embm'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-embm/lib'
+rm -f libembm.a
+\cd /scratch/rgs1e22/cgenie.muffin-22/genie-plasim; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-ecogem: No such file or directory
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-4/genie-plasim; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-plasim'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-embm/lib'
+\cd src/fortran ; make clean
+rm -f libembm.a
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-embm'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-embm/lib'
+\cd /scratch/rgs1e22/cgenie.muffin-9/genie-plasim; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-12/genie-plasim; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-plasim'
+\cd src/fortran ; make clean
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-embm/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-plasim'
+\cd src/fortran ; make clean
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-23/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-embm/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-embm/lib'
+rm -f libembm.a
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-embm/lib'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-plasim'
+\cd src/fortran ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-26/genie-plasim; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-embm/lib'
+rm -f libembm.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-plasim'
+\cd src/fortran ; make clean
+cd src/c; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-embm/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-embm'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+\cd /scratch/rgs1e22/cgenie.muffin-6/genie-plasim; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-embm/src/fortran'
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-plasim'
+\cd src/fortran ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-goldlite; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-1/genie-plasim; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-embm/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+\cd lib ; make clean
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-goldlite: No such file or directory
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-plasim'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-12/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/src/fortran'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-plasim'
+\cd src/fortran ; make clean
+\cd src/fortran/cmngem; make clean
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-8/genie-embm/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/lib'
+rm -f libplasim.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-6/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-embm/lib'
+rm -f libembm.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-plasim/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-plasim'
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-embm'
+cd src/c; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-16/genie-plasim; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-embm/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-1/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-embm/lib'
+rm -f libembm.a
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-embm'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-7/genie-plasim; make clean
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-gemlite; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-plasim'
+\cd src/fortran ; make clean
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-gemlite: No such file or directory
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-embm/src/fortran'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+\cd lib ; make clean
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+\cd src/fortran/cmngem; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-embm/lib'
+rm -f libembm.a
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f  gem_cmn.o  gem_util.o  gem_geochem.o  gem_carbchem.o  gem_netcdf.o  gem_data.o  initialise_gem.o  end_gem.o libcmngem.a *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-embm/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-embm'
+\cd /scratch/rgs1e22/cgenie.muffin-5/genie-plasim; make clean
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran/cmngem'
+\rm -f *.o genie.exe nccompare *.dep *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice/src/fortran'
+\cd lib ; make clean
+cd src/c; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-7/genie-plasim'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-plasim'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-plasim/src/fortran'
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+rm -rf  compare.o nccompare.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-16/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
+cd src/fortran; make -I ../../ clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-plasim/src/fortran'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-plasim/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-plasim/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-plasim/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-plasim/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-plasim/src/fortran'
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-plasim/lib'
+rm -f libplasim.a
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-plasim/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-plasim/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-goldstein/src/fortran'
+\cd lib ; make clean
+\cd lib ; make clean
+\cd lib ; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-plasim/src/fortran'
+\cd lib ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-plasim/lib'
+rm -f libplasim.a
+rm -rf errfn_ea_go_gs.o errfn_ea_go_gs_ac_bg.o errfn_ig_fi_fi_ml.o errfn_ea_go_gs.exe errfn_ea_go_gs_ac_bg.exe errfn_ig_fi_fi_ml.exe costfn.exe 
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-plasim/lib'
+rm -f libplasim.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-plasim/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-plasim/lib'
+rm -f libplasim.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-plasim'
+\cd /scratch/rgs1e22/cgenie.muffin-10/genie-goldsteinseaice; make clean
+slurmstepd-red161: error: *** JOB 4852827 ON red161 CANCELLED AT 2023-10-06T21:19:57 ***
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-plasim/lib'
+make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-plasim/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-plasim'
+make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-plasim'
+\cd /scratch/rgs1e22/cgenie.muffin/genie-ocnlite; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-21/genie-goldsteinseaice; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-22/genie-goldsteinseaice; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-plasim/lib'
+rm -f libplasim.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-plasim/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-plasim/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-plasim/src/fortran'
+rm -f libplasim.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-plasim'
+\cd lib ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-11/genie-goldsteinseaice; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-plasim/lib'
+rm -f libplasim.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-plasim/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice/lib'
+rm -f libplasim.a
+rm -f libgoldsteinseaice.a
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-plasim/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-5/genie-plasim/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod *.o *.mod
+/bin/sh: line 0: cd: /scratch/rgs1e22/cgenie.muffin/genie-ocnlite: No such file or directory
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-plasim'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-plasim/src/fortran'
+\cd /scratch/rgs1e22/cgenie.muffin-27/genie-goldsteinseaice; make clean
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-plasim/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-plasim/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-plasim'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-plasim/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-plasim'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-plasim/lib'
+rm -f libplasim.a
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-plasim'
+\cd /scratch/rgs1e22/cgenie.muffin-24/genie-goldsteinseaice; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-goldstein/lib'
+rm -f libgoldstein.a
+make[1]: Entering directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
+\cd /scratch/rgs1e22/cgenie.muffin-20/genie-goldsteinseaice; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-plasim/lib'
+rm -f libplasim.a
+\cd /scratch/rgs1e22/cgenie.muffin-17/genie-goldsteinseaice; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-goldsteinseaice'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-plasim/src/fortran'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-plasim/lib'
+rm -f libplasim.a
+\cd /scratch/rgs1e22/cgenie.muffin-2/genie-ents; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldsteinseaice'
+\cd lib ; make clean
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-plasim/lib'
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldsteinseaice'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-25/genie-plasim'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-goldstein/lib'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-plasim/lib'
+\cd /scratch/rgs1e22/cgenie.muffin-25/genie-goldsteinseaice; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-plasim/src/fortran'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-28/genie-plasim'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-3/genie-goldstein'
+\cd lib ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-3/genie-embm; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-28/genie-goldsteinseaice; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-11/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-plasim/src/fortran'
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-plasim/lib'
+\cd lib ; make clean
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-19/genie-plasim'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-plasim/lib'
+rm -f libplasim.a
+\cd /scratch/rgs1e22/cgenie.muffin-19/genie-goldsteinseaice; make clean
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-27/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-plasim/lib'
+\cd src/fortran/cmngem; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-plasim/lib'
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-plasim'
+rm -f libplasim.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-17/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+\cd /scratch/rgs1e22/cgenie.muffin-13/genie-goldsteinseaice; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-9/genie-plasim/src/fortran'
+\cd lib ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-24/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-20/genie-goldsteinseaice'
+\cd src/fortran ; make clean
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-22/genie-goldsteinseaice/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-14/genie-plasim/lib'
+rm -f libplasim.a
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-2/genie-ents'
+\cd lib ; make clean
+make[2]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-15/genie-plasim/lib'
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-10/genie-goldsteinseaice/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-18/genie-plasim/lib'
+rm -f libplasim.a
+make[2]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin-21/genie-goldsteinseaice/src/fortran'
+\rm -f *.o *__genmod.f90 *__genmod.mod
+==============================================================================
+Running epilogue script on red161.
+
+Submit time  : 2023-10-06T21:19:12
+Start time   : 2023-10-06T21:19:56
+End time     : 2023-10-06T21:19:57
+Elapsed time : 00:00:01 (Timelimit=2-00:00:00)
+
+Job ID: 4852827
+Cluster: i5
+User/Group: rgs1e22/hn
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 40
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:00:40 core-walltime
+Job Wall-clock time: 00:00:01
+Memory Utilized: 2.53 MB
+Memory Efficiency: 0.00% of 158.20 GB
+

@@ -5404,3 +5404,24 @@ make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-13/genie-ocnli
 \rm -f include/*.mod
 \rm -f testbiogem.out
 \rm -f tmp*
+slurmstepd-red392: error: *** JOB 4848842 ON red392 CANCELLED AT 2023-10-06T21:16:51 ***
+==============================================================================
+Running epilogue script on red392.
+
+Submit time  : 2023-10-06T09:05:26
+Start time   : 2023-10-06T09:07:09
+End time     : 2023-10-06T21:16:51
+Elapsed time : 12:09:42 (Timelimit=2-00:00:00)
+
+Job ID: 4848842
+Cluster: i5
+User/Group: rgs1e22/hn
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 40
+CPU Utilized: 1-05:43:20
+CPU Efficiency: 6.11% of 20-06:28:00 core-walltime
+Job Wall-clock time: 12:09:42
+Memory Utilized: 18.31 GB
+Memory Efficiency: 11.57% of 158.20 GB
+
