@@ -7112,3 +7112,24 @@ make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-4/genie-ocnlit
 \rm -f tmp*
 \rm -f testbiogem.out
 \rm -f tmp*
+slurmstepd-red238: error: *** JOB 5067938 ON red238 CANCELLED AT 2023-11-29T19:36:25 ***
+==============================================================================
+Running epilogue script on red238.
+
+Submit time  : 2023-11-28T18:25:51
+Start time   : 2023-11-28T18:36:54
+End time     : 2023-11-29T19:36:25
+Elapsed time : 1-00:59:31 (Timelimit=2-00:00:00)
+
+Job ID: 5067938
+Cluster: i5
+User/Group: rgs1e22/hn
+State: CANCELLED (exit code 0)
+Nodes: 1
+Cores per node: 40
+CPU Utilized: 24-20:06:19
+CPU Efficiency: 59.63% of 41-15:40:40 core-walltime
+Job Wall-clock time: 1-00:59:31
+Memory Utilized: 30.06 GB
+Memory Efficiency: 19.00% of 158.20 GB
+

@@ -119,13 +119,13 @@ done
 # if not, wait a minute and check again...
 # don't submit job until there are...
 # NOTE - maybe this should really sit at the top of the sbatch scripts rather than down here??
-ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
-while [ $ready_clones -lt 40 ]
-do 
-echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
-sleep 60
-continue
-done
+#ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
+#while [ $ready_clones -lt 40 ]
+#do 
+#echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
+#sleep 60
+#continue
+#done
 # set first .sbatch script running within this shell script
 # next ones are set running by the previous sbatch file. 
 sbatch ~/cgenie.jobs/muffin-basket-$short_name-1.sbatch
