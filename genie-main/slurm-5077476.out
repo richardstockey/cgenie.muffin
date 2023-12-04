@@ -5220,3 +5220,23 @@ make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin-26/genie-ocnli
 \rm -f tmp*
 \rm -f testbiogem.out
 \rm -f tmp*
+==============================================================================
+Running epilogue script on red059.
+
+Submit time  : 2023-11-30T18:29:55
+Start time   : 2023-11-30T18:36:58
+End time     : 2023-12-01T15:44:02
+Elapsed time : 21:07:04 (Timelimit=2-00:00:00)
+
+Job ID: 5077476
+Cluster: i5
+User/Group: rgs1e22/hn
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 40
+CPU Utilized: 13-13:16:05
+CPU Efficiency: 38.51% of 35-04:42:40 core-walltime
+Job Wall-clock time: 21:07:04
+Memory Utilized: 19.09 GB
+Memory Efficiency: 12.07% of 158.20 GB
+
