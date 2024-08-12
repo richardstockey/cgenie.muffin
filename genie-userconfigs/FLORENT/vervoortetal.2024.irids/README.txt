@@ -59,7 +59,7 @@ The follow-on, 2nd-stage (accelerated) open system spin-up requires a long spinu
 ./runmuffin.sh muffin.CBSG.fkl_pp30.BASES_PV PUBS/published/vervoortetal.2024 fkl_pp30_c.SPIN2gl_a 750000 fkl_pp30_c.SPIN1
 ./runmuffin.sh muffin.CBSG.fkl_np30.BASES_PV PUBS/published/vervoortetal.2024 fkl_np30_c.SPIN2gl_a 750000 fkl_np30_c.SPIN1
 
-(1b) Second Stage SPINUP (part 2)
+(1c) Second Stage SPINUP (part 2)
 
 ./runmuffin.sh muffin.CBSG.fkl_pp30.BASES_PV PUBS/published/vervoortetal.2024 fkl_pp30_c.SPIN2gl_b 750000 fkl_pp30_c.SPIN2gl_a
 ./runmuffin.sh muffin.CBSG.fkl_np30.BASES_PV PUBS/published/vervoortetal.2024 fkl_np30_c.SPIN2gl_b 750000 fkl_np30_c.SPIN2gl_a
