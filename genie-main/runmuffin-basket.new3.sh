@@ -27,6 +27,11 @@
 # – then need to begin a loop of restarts. 
 # - [we will use the slurm dependency `sbatch --dependency=afterok:$job_id job2.sh`]
 
+
+# version 3 of this script runs stuff in two batches separated by a 6 minute break
+# still runs on 40 cores
+# just only needs 20 versions of genie...
+# NOTE - this only works for 1 run at a time right now (NOT for restarts...)
 module load gcc/6.4.0
 module load gnumake
 
@@ -73,10 +78,15 @@ do
 # all runs should be the same duration at this stage.
 # could eventually update this in the future for mixed plasim runs, gemlite runs, etc.
 
-if [ $iteration -eq 1 ]
-then # first experiment doesnt necessarily start from a restart (need to build in this option though)
+if [ $iteration -eq 1 ]; then # first experiment doesnt necessarily start from a restart (need to build in this option though)
+if [ $i -le 20 ]; then # no waiting for first 20 runs
 printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+else # wait 6 mins (recall five occassionally not being quite enough) for second 20 runs
+j=$((i-20))
+printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$j/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+"  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
+fi
 else # subsequent experiments all start from a restart
 printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
