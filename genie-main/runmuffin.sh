@@ -204,13 +204,6 @@ elif [ $LONS -eq 72 ]; then
     let N_TIMESTEPS=192
     let dbiostp=2
 else
-
-let N_TIMESTEPS=96
-
-let dbiostp=2
-
-fi
-else
     let N_TIMESTEPS=96
     let dbiostp=2
 fi
@@ -383,7 +376,7 @@ echo ">> Here we go ..."
 echo ""
 cd $BINARYPATH
 # test for change of base-config
-if test -e 'current_config.dat' 
+if test -e 'current_config.dat'
 then
     current_config=$(<'current_config.dat')
     if [ "$current_config" != "$MODELID" ]; then
