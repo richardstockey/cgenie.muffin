@@ -1,0 +1,17 @@
+**** TESTING - configs/eb_go_gs_ac_bg_test.xml ****
+make[1]: Entering directory '/mainfs/scratch/rgs1e22/cgenie.muffin/genie-main'
+/bin/sh: line 0: test: 6.4.0: integer expression expected
+makefile:142: target 'clean_plasim' given more than once in the same rule
+makefile:168: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/' given more than once in the same rule
+makefile:177: target '/scratch/rgs1e22/cgenie.muffin/genie-plasim/lib/libplasim.a' given more than once in the same rule
+gfortran -DGENIENX=36 -DGENIENY=36 -DGOLDSTEINNTRACS=14  -c  -I/scratch/rgs1e22/cgenie.muffin/netcdf_libs/include -Wall -fimplicit-none -O2 -O3 -funroll-loops -msse -fno-automatic -mcmodel=large  -fdefault-real-8  -x f95-cpp-input -ffree-line-length-none \
+local_netcdf.f90 -olocal_netcdf.o
+f951: Warning: Nonexistent include directory '/scratch/rgs1e22/cgenie.muffin/netcdf_libs/include' [-Wmissing-include-dirs]
+local_netcdf.f90:10:6:
+
+   use netcdf
+      1
+Fatal Error: Can't open module file 'netcdf.mod' for reading at (1): No such file or directory
+compilation terminated.
+make[1]: *** [makefile:224: local_netcdf.o] Error 1
+make[1]: Leaving directory '/mainfs/scratch/rgs1e22/cgenie.muffin/genie-main'
