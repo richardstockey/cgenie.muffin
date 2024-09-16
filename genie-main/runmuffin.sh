@@ -12,7 +12,7 @@ echo ""
 # CHANGE THIS FOR INSTALLATIONS OTHER THAN IN $HOME
 # SET THE SAME AS IN user.mak AND user.sh
 # set home directory
-HOMEDIR=/scratch/$USER
+HOMEDIR=$HOME
 #####################################################################
 # set output directory
 OUTPUTDIR=$HOMEDIR/cgenie_output
@@ -200,9 +200,6 @@ elif [ $LONS -eq 36 ] && [ $LEVS -eq 32 ]; then
 elif [ $LONS -eq 48 ] && [ $LEVS -eq 16 ]; then
     let N_TIMESTEPS=96
     let dbiostp=2
-elif [ $LONS -eq 72 ]; then
-    let N_TIMESTEPS=192
-    let dbiostp=2
 else
     let N_TIMESTEPS=96
     let dbiostp=2
@@ -376,7 +373,7 @@ echo ">> Here we go ..."
 echo ""
 cd $BINARYPATH
 # test for change of base-config
-if test -e 'current_config.dat'
+if test -e 'current_config.dat' 
 then
     current_config=$(<'current_config.dat')
     if [ "$current_config" != "$MODELID" ]; then
