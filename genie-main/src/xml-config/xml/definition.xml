@@ -1510,6 +1510,14 @@
 			<value datatype="string">n</value>
                         <description>new/continuing embm</description>
                     </param>
+		    <param name="sodaylen">
+                        <value datatype="real">86400.0</value>
+                        <description>length of solar day in embm</description>
+                    </param>
+		    <param name="sidaylen">
+                        <value datatype="real">86164.0</value>
+                        <description>length of sidereal day in embm</description>
+                    </param>
                     <param name="yearlen">
                         <value datatype="real">365.25</value>
                         <description>number of days per year embm</description>
@@ -1895,21 +1903,33 @@
                         <description>use ENTS albedo scheme (y/n)</description>
                     </param>
 -->
+                    <param name="opt_orbit_old">
+			<value datatype="boolean">.true.</value>
+			            <description>use old (incorrect) orbital forcing calculations?</description>
+                    </param>                   
                     <param name="par_orbit_osce">
 			<value datatype="real">0.0167</value>
                         <description>eccentricity</description>
                     </param>
                     <param name="par_orbit_oscsob">
 			<value datatype="real">0.397789</value>
-                        <description>sine of obliquity</description>
+                        <description>sine of obliquity (for opt_orbit_old=true)</description>
                     </param>
                     <param name="par_orbit_oscgam">
 			<value datatype="real">99999</value>
-                        <description>longitude of perihelion (in degrees)</description>
+                        <description>MEAN longitude of perihelion (in degrees)(for opt_orbit_old=true)</description>
                     </param>
                     <param name="par_orbit_osctau0">
 			<value datatype="real">-0.5</value>
-                        <description>really no-one knows what this is ...</description>
+                        <description>date of perihelion from Jan. 1st (in days) (for opt_orbit_old=true)</description>
+                    </param>
+					<param name="par_orbit_oscobl">
+			<value datatype="real">0.409093</value>
+                        <description>obliquity (in radians) (for opt_orbit_old=false)</description>
+                    </param>	
+                    <param name="par_orbit_osclonperi">
+			<value datatype="real">1.796257</value>
+                        <description>TRUE longitude of perihelion (in radians) (for opt_orbit_old=false)</description>
                     </param>
                     <param name="orbit_radfor">
 			<value datatype="string">n</value>
@@ -2459,6 +2479,14 @@
 			<value datatype="string">n</value>
                         <description>new/continuing goldstein</description>
                     </param>
+		    <param name="sodaylen">
+                        <value datatype="real">86400.0</value>
+                        <description>length of solar day in goldstein</description>
+                    </param>
+		    <param name="sidaylen">
+                        <value datatype="real">86400.0</value>
+                        <description>length of sidereal day in goldstein -- 86400.0 is for backwards compatablity; 86164.0 is the 'real' value</description>
+                    </param>
                     <param name="yearlen">
                         <value datatype="real">365.25</value>
                         <description>number of days per year goldstein</description>
@@ -2780,6 +2808,14 @@
                     <param name="ans">
 			<value datatype="string">n</value>
                         <description>new/continuing seaice</description>
+                    </param>
+		    <param name="sodaylen">
+                        <value datatype="real">86400.0</value>
+                        <description>length of solar day in goldsteinseaice</description>
+                    </param>
+		    <param name="sidaylen">
+                        <value datatype="real">86400.0</value>
+                        <description>length of sidereal day in goldsteinseaice -- 86400.0 is for backwards compatablity; 86164.0 is the 'real' value</description>
                     </param>
                     <param name="yearlen">
                         <value datatype="real">365.25</value>
@@ -4289,6 +4325,10 @@
 			<value datatype="real">20.0</value>
                         <description>Light e-folding depth (m) (OCMIP-2)</description>
                     </param>
+                    <param name="par_bio_c0_I">
+			<value datatype="real">20.0</value>
+                        <description>half saturatin value for light (W m-2) [Doney et al., 2006] (30.0 in Parekth et al. [2005])</description>
+                    </param>
                     <param name="par_bio_kT0">
 			<value datatype="real">0.59</value>
                         <description>coefficient for temperature-dependent uptake rate modifier</description>
@@ -4414,6 +4454,10 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                     <param name="opt_bio_red_SitoC">
 			<value datatype="string">Ridgwell2001</value>
                         <description>opal:POC rain ratio option ID string</description>
+                    </param>
+                    <param name="par_bio_POC_CaCO3_target">
+			<value datatype="real">0.0</value>
+                        <description>(tuning) target potential global mean CaCO3:POC rain ratio (set to zero to disable)</description>
                     </param>
 <!-- REMINERALIZATION  -->
                     <param name="par_bio_remin_RDOMfrac">
@@ -4755,10 +4799,6 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                     <param name="par_bio_remin_POC_eta">
 						<value datatype="real">1.17</value>
                         <description>exponent relating e-folding depth to ecogem size class [Stemmann et al 2004]</description>
-                    </param>
-                    <param name="ctrl_bio_remin_iodine_POConly">
-                       <value datatype="boolean">.false.</value>
-                        <description>exclude DOC from iodine redox calculation?</description>
                     </param>
                     <param name="ctrl_bio_remin_ecogemMLD">
                        <value datatype="boolean">.false.</value>
@@ -5259,6 +5299,10 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                     <param name="par_bio_remin_r_IO3toI">
 			<value datatype="real">0.01</value>
                         <description>SO4 POC remin/O2 ratio for IO3 -> I [for option thresholdflex]</description>
+                    </param>
+                    <param name="ctrl_bio_remin_iodine_POConly">
+                       <value datatype="boolean">.false.</value>
+                        <description>exclude DOC from iodine redox calculation? [NOW ALWAYS EXCLUDED ... THIS PARAMETER TO BE REMOVED IN COOKIE RELEASE]</description>
                     </param>
 <!-- ABIOTIC PRECIPITATION  -->
                     <param name="par_bio_CaCO3precip_sf">
@@ -7736,6 +7780,10 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 			<value datatype="real">-6.0</value>
                         <description>assumed d13C of volcanic emissions (o/oo)</description>
                     </param>
+                    <param name="par_sed_diag_P2ALK">
+			<value datatype="real">-16.0</value>
+                        <description>assumed implicit P:ALK (non zero values only really make any sense in ocean-only biogeochemical cycling)</description>
+                    </param>
 <!-- I/O: DIRECTORY DEFINITIONS  -->
                     <param name="par_pindir_name">
 			<value datatype="string"></value>
@@ -8852,7 +8900,7 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
                     </param>
 <!-- Silicon parameters -->
                     <param name="qminSi_a">
-			<value datatype="real">0.0</value>
+			<value datatype="real">0.002</value>
 	                  <description>Silicon minimum quota - intercept</description>
                     </param>
                     <param name="qminSi_b">
@@ -8860,7 +8908,7 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 	                  <description>Silicon minimum quota - exponent</description>
                     </param>
                     <param name="qmaxSi_a">
-			<value datatype="real">0.0</value>
+			<value datatype="real">0.004</value>
 	                  <description>Silicon maximum quota - intercept</description>
                     </param>
                     <param name="qmaxSi_b">
@@ -8868,19 +8916,19 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 	                  <description>Silicon maximum quota - exponent</description>
                     </param>
                     <param name="vmaxSiO2_a">
-			<value datatype="real">0.0</value>
+			<value datatype="real">0.077</value>
 	                  <description>Maximum silica uptake rate - intercept</description>
                     </param>
                     <param name="vmaxSiO2_b">
-			<value datatype="real">0.0</value>
+			<value datatype="real">-0.27</value>
 	                  <description>Maximum silica uptake rate - exponent</description>
                     </param>
                     <param name="affinSiO2_a">
-			<value datatype="real">0.0</value>
+			<value datatype="real">3.208</value>
 	                  <description>Silica uptake affinity (Michaelis-Menten) - intercept</description>
                     </param>
                     <param name="affinSiO2_b">
-			<value datatype="real">0.0</value>
+			<value datatype="real">-0.54</value>
 	                  <description>Silica uptake affinity (Michaelis-Menten) - exponent</description>
                     </param>
                     <param name="kexcSi_a">
@@ -8904,6 +8952,46 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 			<value datatype="real">-3.80</value>
 	                  <description>maximum photosynthetic rate - c</description>
                     </param>
+                    <param name="vmaxDIC_a_pft_pico">
+			<value datatype="real">0.9</value>
+	                  <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_b_pft_pico">
+      <value datatype="real">0.08</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_a_pft_cocco">
+      <value datatype="real">1.4</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_b_pft_cocco">
+      <value datatype="real">-0.08</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_a_pft_diatom">
+      <value datatype="real">3.9</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_b_pft_diatom">
+      <value datatype="real">-0.08</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_a_pft_eukaryote">
+      <value datatype="real">1.7</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_b_pft_eukaryote">
+      <value datatype="real">-0.08</value>
+                    <description>maximum photosynthetic rate - a</description>
+                    </param>
+                    <param name="vmaxDIC_a_pft_diazotroph">
+      <value datatype="real">0.95</value>
+                    <description>Diazotroph maximum photosynthetic rate (d-1) - intercept</description>
+                    </param>
+                    <param name="vmaxDIC_b_pft_diazotroph">
+      <value datatype="real">-0.08</value>
+                    <description>Diazotroph maximum photosynthetic rate - exponent</description>
+                    </param> ! Aaron Diatom 23
                     <param name="qcarbon_a">
 			<value datatype="real">1.45e-11</value>
 	                  <description>Carbon per cell - intercept</description>
@@ -9175,10 +9263,23 @@ par_bio_red_PC_alpha2 scales the offset of 6.0e-3 of Galbraith & Martiny, 2015 C
 			<value datatype="string">temperature.dat</value>
 		     			<description>Input file for forcing temperature in ecogem</description>
                     </param>
-                    <param name="par_ecogem_timeseries_file">
-			<value datatype="string">timeseries_sites.eco</value>
-		     			<description>timeseries locations file name</description>
+<!-- Misc -->
+                   <param name="par_cocco_palatability_mod">
+      <value datatype="real">1.0</value>
+              <description>modifier for coccolithophore palatability</description>
                     </param>
+                    <param name="par_cocco_vmax_mod">
+      <value datatype="real">1.0</value>
+              <description>modifier for coccolithophore uptake rate</description>
+                    </param>
+                    <param name="par_diatom_palatability_mod">
+      <value datatype="real">1.0</value>
+              <description>Modifier for diatom palatability</description>
+                    </param>
+                    <param name="par_diatom_vmax_mod">
+      <value datatype="real">1.0</value>
+              <description>Modifier for diatom uptake and growth</description>    ! Aaron Diatom 23                
+                   </param>
                 </namelist>
             </file>
         </model>
