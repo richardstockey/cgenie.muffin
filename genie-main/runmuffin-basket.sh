@@ -33,6 +33,7 @@
 # just only needs 20 versions of genie...
 # NOTE - this only works for 1 run at a time right now (NOT for restarts...)
 # 20241021 – runmuffin-basket.new3.sh is renamed to runmuffin-basket.sh for new cgenie fork.
+# also redirecting slurm outputs to separate "slurm" folder in home directory rather than cgenie.muffin/genie-main (should have done earlier)
 module load gcc/6.4.0
 module load gnumake
 
@@ -57,6 +58,8 @@ printf "#!/bin/sh
 #SBATCH --time=60:00:00
 #SBATCH --mail-user=$1
 #SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH -o "$(HOME)/slurm/$(date +%Y%m%d%H%M%S)-$(SLURM_JOB_ID)-indexing.txt"
+
 
 module load gcc/6.4.0
 module load gnumake
