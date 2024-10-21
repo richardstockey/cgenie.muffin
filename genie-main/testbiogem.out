@@ -5025,7 +5025,7 @@ g++ -o nccompare.exe  compare.o  -L/home/rgs1e22/lib -lnetcdf_c++ -lnetcdf -lm
 make[2]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main/src/c'
 make[1]: Leaving directory '/mainfs/home/rgs1e22/cgenie.muffin/genie-main'
 STARTING EXPERIMENT:
-Mon Oct 21 11:49:18 BST 2024
+Mon Oct 21 12:04:40 BST 2024
 
  *******************************************************
   *** Welcome to cGENIE -- version:    0
@@ -5115,9 +5115,9 @@ Mon Oct 21 11:49:18 BST 2024
  *******************************************************
 
 
-real	0m11.219s
-user	0m10.036s
-sys	0m0.391s
+real	0m9.998s
+user	0m8.951s
+sys	0m0.236s
 ENDING EXPERIMENT:
 genie_eb_go_gs_ac_bg:
 Comparing variable year
