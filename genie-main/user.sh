@@ -18,7 +18,7 @@
 # then $RUNTIME_ROOT should be "../../genie"
 #
 # RUNTIME_OUTDIR should always be ".".  This is because experiments are
-# run from the output directory. 
+# run from the output directory.
 #
 # ---------------------------------------------------------------------
 #
@@ -28,11 +28,10 @@
 #
 # ---------------------------------------------------------------------
 
-CODEDIR=~/cgenie.muffin
-OUTROOT=~/cgenie_output
-ARCHIVEDIR=~/cgenie_archive
-LOGDIR=~/cgenie_log
+CODEDIR=/scratch/$USER/cgenie.muffin
+OUTROOT=/scratch/$USER/cgenie_output
+ARCHIVEDIR=/scratch/$USER/cgenie_archive
+LOGDIR=/scratch/$USER/cgenie_log
 
 RUNTIME_ROOT=${RUNTIME_ROOT:=../../cgenie.muffin}
 RUNTIME_OUTDIR=${RUNTIME_OUTDIR:=.}
-
