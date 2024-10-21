@@ -1,0 +1,115 @@
+ 
+------------------------------------------------------------
+   Hello! Welcome to muffingen v0.9.25
+   We are going to make a GREAT model configuration!
+------------------------------------------------------------
+ 
+>   1. CHECKING PRIMARY OPTIONS ...
+       * GCM == hadcm3l (OK)
+>   2. CREATING GENIE GRID ...
+       - GENIE grid generated.
+>   3. READING AXES INFORMATION ...
+       - Axis info read.
+>   4. READING MASK & TOPO GRIDS ...
+       - Mask & topo info read.
+>   5. RE-GRIDING MASK ...
+       - Mask re-gridded.
+       * Original land area fraction    = 0.36865
+       * Re-gridded land area fraction  = 0.36188
+>   6. FILTERING MASK ...
+       - Single cell embayments filtered out.
+       - Polar connections cleaned up.
+       * found 1 water masses
+       * found 2 water masses
+       - Small water bodies cleaned up.
+       * Revised land area fraction = 0.36806
+>   8. CREATE FINAL MASK ...
+       - .mask_out.FINAL.dat saved
+       * Final land area fraction   = 0.36806
+>   9. RE-GRIDING TOPOGRAPHY ...
+       - Topography re-gridded.
+>   10. RE-GRIDING OCEAN BATHYMETRY ...
+       - Bathymetry re-gridding complete.
+>  11. FILTERING BATHYMETRY ...
+         -> MAKE DEEPER :: Loop count = 1 @ (1,28,4); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (2,19,4); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (3,4,5); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (3,7,4); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (5,34,4); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (19,17,6); d = 4; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (20,36,4); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (21,11,4); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (21,35,5); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (22,2,3); s = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (22,7,10); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (22,32,5); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (25,2,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (26,3,5); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (30,14,3); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (32,15,4); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (34,1,3); s = 2; l = 1
+         -> MAKE SHALLOWER :: Loop count = 1 @ (35,4,3); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (35,9,4); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (35,29,3); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (36,22,4); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 2 @ (3,4,4); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 2 @ (22,2,4); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 2 @ (22,7,9); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (22,32,4); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 2 @ (23,2,4); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 3 @ (22,7,8); d = 2; l = 2
+       - Topography filtered.
+>  13. CALCULATING RUN-OFF AND GENERATE .k1 FILE ...
+       - .k1 file saved
+>  14. IDENTIFY ISLANDS ...
+       * found 1 land masses
+       * found 2 land masses
+>  15. UPDATING ISLANDS & PATHS ...
+       * updated find: N-S connected polar island
+       * total # true islands = 1
+>  16. GENERATING .paths FILE ...
+       - .paths file saved
+>  17. GENERATING .psiles FILE ...
+       - .psiles file saved
+>  18. GENERATING SEDIMENT TOPO ...
+       - Converted k1 file data (nothing to re-grid).
+[Warning: PostScript format 'psc2' will not be supported in a future release.] 
+[> In inputcheck
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('print', '/Applications/MATLAB_R2023b.app/toolbox/matlab/graphics/printing/print.m', 41)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2023b.app/toolbox/matlab/graphics/printing/print.m',41,0)">line 41</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('plot_2dgridded', '/Users/rgs1e22/muffingen-master/source/plot_2dgridded.m', 239)" style="font-weight:bold">plot_2dgridded</a> (<a href="matlab: opentoline('/Users/rgs1e22/muffingen-master/source/plot_2dgridded.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('muffingen', '/Users/rgs1e22/muffingen-master/muffingen.m', 1178)" style="font-weight:bold">muffingen</a> (<a href="matlab: opentoline('/Users/rgs1e22/muffingen-master/muffingen.m',1178,0)">line 1178</a>)] 
+       - .depth.dat saved
+       - template file .sedcoremask.dat saved
+       - template file .reefmask.dat saved
+>  20. CREATING WIND PRODUCTS ...
+       - Creating wind product input mask
+       - Regridding wind stress (x) to GOLDSTEIN u-grid
+       - Regridding wind stress (y) to GOLDSTEIN u-grid
+       - Regridding wind stress (x) to GOLDSTEIN v-grid
+       - Regridding wind stress (y) to GOLDSTEIN v-grid
+       - Regridding wind velocity (x) to GOLDSTEIN c-grid
+       - Regridding wind velocity (y) to GOLDSTEIN c-grid
+       - Regridding wind speed to GOLDSTEIN c-grid
+       - Written tau u (u point) data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.taux_u.dat
+       - Written tau u (v point) data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.taux_v.dat
+       - Written tau v (u point) data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.tauy_u.dat
+       - Written tau v (v point) data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.tauy_v.dat
+       - Written u wind speed data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.wvelx.dat
+       - Written v wind speed data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.wvely.dat
+       - Written BIOGEM windspeed data to /Users/rgs1e22/muffingen-master/HADCM3L_16lvl_c/L23b_239/L23b_239.windspeed_uvaa.dat
+       - Re-grided GCM wind products.
+>  21. LOADING ALBEDO DATA ...
+       - Read GCM albedo data.
+>  22. CREATING ALBEDO DATA ...
+       - Re-gridded GCM albedo data.
+       - 2D albedo file saved
+       - Generated zonal mean albedo profile.
+       - .albd.dat file saved
+>  25. GENERATING CONFIG FILE PARAMETER LINES ...
+       - .config file saved
+ 
+------------------------------------------------------------
+   Congratulations! SOMETHING was created ... 
+   ... hope it was what you wished for! :o)
+------------------------------------------------------------
+ 

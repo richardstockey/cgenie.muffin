@@ -1,0 +1,151 @@
+ 
+------------------------------------------------------------
+   Hello! Welcome to muffingen v0.9.25
+   We are going to make a GREAT model configuration!
+------------------------------------------------------------
+ 
+>   1. CHECKING PRIMARY OPTIONS ...
+       * GCM == hadcm3l (OK)
+>   2. CREATING GENIE GRID ...
+       - GENIE grid generated.
+>   3. READING AXES INFORMATION ...
+       - Axis info read.
+>   4. READING MASK & TOPO GRIDS ...
+       - Mask & topo info read.
+>   5. RE-GRIDING MASK ...
+       - Mask re-gridded.
+       * Original land area fraction    = 0.16833
+       * Re-gridded land area fraction  = 0.15818
+>   6. FILTERING MASK ...
+       - Single cell embayments filtered out.
+       - Polar connections cleaned up.
+       * found 1 water masses
+       - Small water bodies cleaned up.
+       * Revised land area fraction = 0.15972
+>   8. CREATE FINAL MASK ...
+       - .mask_out.FINAL.dat saved
+       * Final land area fraction   = 0.15972
+>   9. RE-GRIDING TOPOGRAPHY ...
+       - Topography re-gridded.
+>   10. RE-GRIDING OCEAN BATHYMETRY ...
+       - Bathymetry re-gridding complete.
+>  11. FILTERING BATHYMETRY ...
+         -> MAKE SHALLOWER :: Loop count = 1 @ (2,31,4); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (3,14,10); s = 2; l = 1
+         -> MAKE SHALLOWER :: Loop count = 1 @ (3,22,10); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (3,33,15); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (5,17,15); d = 4; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (5,24,13); s = 4; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (7,7,3); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (8,11,9); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (9,17,8); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (11,17,2); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (11,18,2); s = 4; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (11,26,14); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (12,19,2); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (12,20,2); s = 4; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (14,30,8); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (15,31,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (17,32,9); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (18,31,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (18,33,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (18,36,10); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (19,31,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (20,28,14); d = 3; l = 1
+         -> MAKE SHALLOWER :: Loop count = 1 @ (20,31,2); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (21,31,2); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (21,32,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (22,17,15); d = 4; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (22,28,8); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (22,32,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (22,34,10); d = 4; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (23,23,12); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (23,26,6); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (23,32,2); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (23,33,2); s = 4; l = 0
+         -> MAKE SHALLOWER :: Loop count = 1 @ (24,17,3); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (24,34,9); d = 3; l = 1
+         -> MAKE SHALLOWER :: Loop count = 1 @ (25,21,3); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (26,27,9); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (26,33,4); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (26,35,6); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (27,14,9); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (27,25,8); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (27,32,13); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (28,16,14); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (28,26,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (29,13,5); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (29,16,9); s = 2; l = 1
+         -> MAKE SHALLOWER :: Loop count = 1 @ (29,25,2); s = 4; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (29,27,4); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (29,29,5); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 1 @ (30,14,5); d = 3; l = 1
+         -> MAKE SHALLOWER :: Loop count = 1 @ (34,13,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 1 @ (36,33,12); d = 3; l = 1
+         -> MAKE SHALLOWER :: Loop count = 2 @ (3,14,11); s = 2; l = 1
+         -> MAKE DEEPER :: Loop count = 2 @ (3,33,14); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (9,17,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (14,30,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (17,32,8); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (18,33,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (22,28,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (22,34,9); d = 4; l = 0
+         -> MAKE SHALLOWER :: Loop count = 2 @ (24,16,3); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 2 @ (26,27,8); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (27,14,8); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 2 @ (27,25,7); d = 3; l = 1
+         -> MAKE SHALLOWER :: Loop count = 2 @ (34,12,2); s = 3; l = 0
+         -> MAKE DEEPER :: Loop count = 3 @ (3,33,13); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (9,17,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (17,32,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (18,33,5); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (22,28,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (26,27,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (27,14,7); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 3 @ (27,25,6); d = 3; l = 1
+         -> MAKE DEEPER :: Loop count = 4 @ (17,32,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 4 @ (22,28,5); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 4 @ (26,27,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 4 @ (27,14,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 5 @ (17,32,5); d = 2; l = 2
+       - Topography filtered.
+>  13. CALCULATING RUN-OFF AND GENERATE .k1 FILE ...
+       - .k1 file saved
+>  14. IDENTIFY ISLANDS ...
+       * found 1 land masses
+       * found 2 land masses
+       * found 3 land masses
+       * found 4 land masses
+       * found 5 land masses
+       * found 6 land masses
+       * found 7 land masses
+       * found 8 land masses
+       * found 9 land masses
+>  15. UPDATING ISLANDS & PATHS ...
+       * updated find: 1 islands
+       * updated find: 2 islands
+       * updated find: 3 islands
+       * updated find: 4 islands
+       * updated find: 5 islands
+       * updated find: 6 islands
+       * updated find: 7 islands
+       * updated find: N pole island (currently uncounted)
+       * updated find: 8 islands
+       * total # true islands = 8
+ *** Problem with island path @ (6,27) ...
+ *** User intevention required @ (6,27) to resolve problem with island path.
+       * Borders alteration procedure :
+         (1) left button to increase border #
+         (2) right button to decrease border # (0 == no border)
+         (3) middle button, or clickoutside the grid, to finish
+         [exit (middle button) if unsure WTF]
+       - Out of grid range
+       * Borders alteration complete
+>  16. GENERATING .paths FILE ...
+       * Ignoring border #1
+       * Creating raw path #2 ...
+       * Creating raw path #3 ...
+ *** You may have insufficient seperation between the South Pole and a land mass:
+     => create a 2 cell seperation of ocean, or join landmass to S. Pole.
+       (but there could be other issues ...)
+ 
