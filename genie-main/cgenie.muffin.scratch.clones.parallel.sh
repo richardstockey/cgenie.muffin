@@ -41,6 +41,7 @@ for clone in $(seq $2)
 do
 printf "(
 ## Clean up
+[ -d '/scratch/$USER/cgenie.cookie-$clone' ] && rm -rf /scratch/$USER/cgenie.cookie-$clone
 [ -d '/scratch/$USER/cgenie.muffin-$clone' ] && rm -rf /scratch/$USER/cgenie.muffin-$clone
 # git clone
 cp -R /scratch/$USER/cgenie.muffin /scratch/$USER/cgenie.muffin-$clone

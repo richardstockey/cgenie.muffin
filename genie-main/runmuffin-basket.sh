@@ -58,7 +58,7 @@ printf "#!/bin/sh
 #SBATCH --time=60:00:00
 #SBATCH --mail-user=$1
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH -o "$(HOME)/slurm/$(date +%Y%m%d%H%M%S)-$(SLURM_JOB_ID)-indexing.txt"
+#SBATCH -o "/home/$USER/slurm/$(date +%Y%m%d%H%M%S)-slurm-job.txt"
 
 
 module load gcc/6.4.0
