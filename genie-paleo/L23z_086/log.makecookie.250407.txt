@@ -26,7 +26,7 @@
        * Revised land area fraction = 0.24306
 >   7. APPLYING LAND-SEA MASK ADJUSTMENTS FROM FILE: mask.086_adjusted.txt
 >   9. CREATE FINAL MASK ...
-       * Final land area fraction   = 0.2716
+       * Final land area fraction   = 0.27083
        - .mask.txt saved
        - .maskzeros.txt saved
 >   10. RE-GRIDING TOPOGRAPHY ...
@@ -49,6 +49,7 @@
          -> MAKE SHALLOWER :: Loop count = 1 @ (12,11,6); s = 2; l = 1
          -> MAKE DEEPER :: Loop count = 1 @ (12,35,8); d = 3; l = 1
          -> MAKE DEEPER :: Loop count = 1 @ (13,23,3); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (13,32,2); s = 3; l = 0
          -> MAKE SHALLOWER :: Loop count = 1 @ (13,35,3); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (13,36,9); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (14,14,1); s = 3; l = 0
@@ -119,15 +120,16 @@
          -> MAKE DEEPER :: Loop count = 1 @ (26,16,3); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (26,32,3); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (26,35,6); d = 2; l = 2
+         -> MAKE DEEPER :: Loop count = 1 @ (27,17,2); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 1 @ (27,33,2); s = 3; l = 0
          -> MAKE SHALLOWER :: Loop count = 1 @ (27,34,3); s = 2; l = 1
          -> MAKE DEEPER :: Loop count = 1 @ (28,32,5); d = 3; l = 1
          -> MAKE DEEPER :: Loop count = 1 @ (28,34,5); d = 2; l = 2
+         -> MAKE SHALLOWER :: Loop count = 1 @ (29,17,11); s = 2; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (29,29,1); s = 3; l = 0
          -> MAKE DEEPER :: Loop count = 1 @ (30,8,8); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (30,31,12); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (31,6,3); d = 2; l = 2
-         -> MAKE DEEPER :: Loop count = 1 @ (31,18,2); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (32,3,9); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (32,31,15); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (33,2,13); d = 2; l = 2
@@ -173,6 +175,7 @@
          -> MAKE DEEPER :: Loop count = 2 @ (26,16,2); d = 2; l = 2
          -> MAKE SHALLOWER :: Loop count = 2 @ (27,32,2); s = 3; l = 0
          -> MAKE SHALLOWER :: Loop count = 2 @ (27,33,3); s = 3; l = 0
+         -> MAKE SHALLOWER :: Loop count = 2 @ (29,17,12); s = 2; l = 1
          -> MAKE DEEPER :: Loop count = 2 @ (30,31,11); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 2 @ (32,3,8); d = 2; l = 2
          -> MAKE DEEPER :: Loop count = 2 @ (33,2,12); d = 2; l = 2
@@ -219,9 +222,6 @@
        * found 7 land masses
        * found 8 land masses
        * found 9 land masses
-       * found 10 land masses
-       * found 11 land masses
-       * found 12 land masses
 >  17. UPDATING ISLANDS & PATHS ...
        * updated find: 1 islands
        * updated find: 2 islands
@@ -230,12 +230,7 @@
        * updated find: 5 islands
        * updated find: 6 islands
        * updated find: 7 islands
-       * updated find: 8 islands
-       * updated find: 9 islands
-       * updated find: 10 islands
-       * total # true islands = 9
-         -> Border #1 grid point removed at @ (12,33)
-         -> Border #1 grid point removed at @ (13,33)
+       * total # true islands = 6
 >  18. GENERATING .paths FILE ...
        * Ignoring border #1
        * Creating raw path #2 ...
@@ -244,13 +239,7 @@
        * Creating raw path #5 ...
        * Creating raw path #6 ...
        * Creating raw path #7 ...
-       * Creating raw path #8 ...
-       * Creating raw path #9 ...
-       * Creating raw path #10 ...
        * Building path #2 ...
-         -> NE corner :: Skip path entry @ (14,6)
-         -> SE corner :: Add additional path entry @ (12,4)
-       * Building path #3 ...
          -> NE corner :: Skip path entry @ (19,25)
          -> SE corner :: Add additional path entry @ (19,24)
          -> NE corner :: Skip path entry @ (20,24)
@@ -263,22 +252,16 @@
          -> SE corner :: Add additional path entry @ (17,16)
          -> NE corner :: Skip path entry @ (17,17)
          -> SE corner :: Add additional path entry @ (16,17)
-       * Building path #4 ...
+       * Building path #3 ...
          -> NE corner :: Skip path entry @ (19,29)
          -> SE corner :: Add additional path entry @ (17,26)
-       * Building path #5 ...
+       * Building path #4 ...
          -> NE corner :: Skip path entry @ (25,10)
          -> SE corner :: Add additional path entry @ (22,5)
-       * Building path #6 ...
-         -> NE corner :: Skip path entry @ (32,21)
-         -> SE corner :: Add additional path entry @ (29,18)
-       * Building path #7 ...
-         -> NE corner :: Skip path entry @ (32,23)
-         -> SE corner :: Add additional path entry @ (30,21)
-       * Building path #8 ...
+       * Building path #5 ...
          -> NE corner :: Skip path entry @ (33,9)
          -> SE corner :: Add additional path entry @ (31,7)
-       * Building path #9 ...
+       * Building path #6 ...
          -> NE corner :: Skip path entry @ (15,20)
          -> SE corner :: Add additional path entry @ (15,19)
          -> NE corner :: Skip path entry @ (16,19)
@@ -289,7 +272,7 @@
          -> SE corner :: Add additional path entry @ (13,6)
          -> NE corner :: Skip path entry @ (13,14)
          -> SE corner :: Add additional path entry @ (12,14)
-       * Building path #10 ...
+       * Building path #7 ...
          -> NE corner :: Skip path entry @ (32,7)
          -> SE corner :: Add additional path entry @ (32,6)
          -> NE corner :: Skip path entry @ (34,6)

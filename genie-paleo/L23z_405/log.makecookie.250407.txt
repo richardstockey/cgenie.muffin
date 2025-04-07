@@ -24,7 +24,7 @@
        * Revised land area fraction = 0.15432
 >   7. APPLYING LAND-SEA MASK ADJUSTMENTS FROM FILE: mask.405_adjusted.txt
 >   9. CREATE FINAL MASK ...
-       * Final land area fraction   = 0.15278
+       * Final land area fraction   = 0.15201
        - .mask.txt saved
        - .maskzeros.txt saved
 >   10. RE-GRIDING TOPOGRAPHY ...
@@ -43,7 +43,6 @@
          -> MAKE DEEPER :: Loop count = 1 @ (12,34,14); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (12,36,12); s = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (13,32,4); s = 3; l = 1
-         -> MAKE DEEPER :: Loop count = 1 @ (14,29,15); d = 3; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (15,30,13); s = 2; l = 1
          -> MAKE SHALLOWER :: Loop count = 1 @ (16,30,13); s = 2; l = 2
          -> MAKE DEEPER :: Loop count = 1 @ (16,32,6); d = 2; l = 2
@@ -107,7 +106,6 @@
        * found 6 land masses
        * found 7 land masses
        * found 8 land masses
-       * found 9 land masses
 >  17. UPDATING ISLANDS & PATHS ...
        * updated find: 1 islands
        * updated find: 2 islands
@@ -116,10 +114,9 @@
        * updated find: 5 islands
        * updated find: 6 islands
        * updated find: 7 islands
-       * updated find: 8 islands
        * updated find: N pole island (currently uncounted)
-       * updated find: 9 islands
-       * total # true islands = 9
+       * updated find: 8 islands
+       * total # true islands = 8
 >  18. GENERATING .paths FILE ...
        * Ignoring border #1
        * Creating raw path #2 ...
@@ -130,17 +127,13 @@
        * Creating raw path #7 ...
        * Creating raw path #8 ...
        * Creating raw path #9 ...
-       * Creating raw path #10 ...
        * Building path #2 ...
          -> NE corner :: Skip path entry @ (18,4)
          -> SE corner :: Add additional path entry @ (12,1)
        * Building path #3 ...
-         -> NE corner :: Skip path entry @ (15,10)
-         -> SE corner :: Add additional path entry @ (13,8)
-       * Building path #4 ...
          -> NE corner :: Skip path entry @ (18,8)
          -> SE corner :: Add additional path entry @ (13,4)
-       * Building path #5 ...
+       * Building path #4 ...
          -> NE corner :: Skip path entry @ (20,19)
          -> SE corner :: Add additional path entry @ (20,18)
          -> NE corner :: Skip path entry @ (21,18)
@@ -149,21 +142,21 @@
          -> SE corner :: Add additional path entry @ (15,9)
          -> NE corner :: Skip path entry @ (17,17)
          -> SE corner :: Add additional path entry @ (16,17)
-       * Building path #6 ...
+       * Building path #5 ...
          -> NE corner :: Skip path entry @ (21,31)
          -> SE corner :: Add additional path entry @ (18,27)
          -> NE corner :: Skip path entry @ (18,28)
          -> SE corner :: Add additional path entry @ (17,28)
-       * Building path #7 ...
+       * Building path #6 ...
          -> NE corner :: Skip path entry @ (24,22)
          -> SE corner :: Add additional path entry @ (22,20)
-       * Building path #8 ...
+       * Building path #7 ...
          -> NE corner :: Skip path entry @ (32,20)
          -> SE corner :: Add additional path entry @ (27,8)
-       * Building path #9 ...
+       * Building path #8 ...
          -> NE corner :: Skip path entry @ (7,5)
          -> SE corner :: Add additional path entry @ (5,3)
-       * Building path #10 ...
+       * Building path #9 ...
        - .paths file saved
 >  19. GENERATING .psiles FILE ...
        - .psiles file saved
