@@ -1,11 +1,6 @@
 #!/bin/bash
 ### CGENIE LIBRARIES SETUP AND GENERAL INSTALL ###
-
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <clone_number>"
-    exit 1
-fi
-
+# This script installs the necessary NetCDF libraries for a specific clone of cgenie.muffin.
 clone=$1
 base_dir="/mainfs/scratch/rgs1e22/cgenie.muffin-$clone"
 
