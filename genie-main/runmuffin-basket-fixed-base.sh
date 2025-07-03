@@ -92,8 +92,8 @@ if [ $i -le 20 ]; then # no waiting for first 20 runs
 # $4 = stop_pattern (e.g., "_b_")
 # $5 = suffix (e.g., ".BASES")
 
-# Extract the base name up to the stop_pattern
-base_name="${line%%$4*}$5"
+# Extract the base name up to and including the stop_pattern
+base_name="${line%%$4*}$4$5"
 
 printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $base_name $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
