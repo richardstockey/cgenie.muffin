@@ -50,6 +50,7 @@ cd /scratch/$USER/cgenie.muffin-$clone
 grep -l -r 'cgenie.muffin' --exclude-dir='.git' | xargs sed -i 's/cgenie.muffin/cgenie.muffin-$clone/g'
 cd /scratch/$USER/cgenie.muffin-$clone
 wget -O netcdf.libraries.install.clones.sh https://raw.githubusercontent.com/richardstockey/cgenie.muffin.mix/refs/heads/main/netcdf.libraries.install.clones.sh
+chmod +x netcdf.libraries.install.clones.sh
 ./netcdf.libraries.install.clones.sh $clone
 # return home
 cd /home/$USER/
