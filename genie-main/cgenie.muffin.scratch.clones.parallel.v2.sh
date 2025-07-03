@@ -47,11 +47,8 @@ printf "(
 cp -R /scratch/$USER/cgenie.muffin /scratch/$USER/cgenie.muffin-$clone
 # change names in cgenie.muffin-x
 cd /scratch/$USER/cgenie.muffin-$clone
-grep -l -r 'cgenie.muffin' --exclude-dir='.git' | xargs sed -i 's/cgenie.muffin/cgenie.muffin-$clone/g'
+grep -l -r 'cgenie.muffin' --exclude-dir='.git' --exclude='netcdf.libraries.install.clones.sh' | xargs sed -i 's/cgenie.muffin/cgenie.muffin-$clone/g'
 cd /scratch/$USER/cgenie.muffin-$clone
-git clone https://github.com/richardstockey/cgenie.muffin.mix.git
-mv /scratch/$USER/cgenie.muffin-$clone/cgenie.muffin.mix/netcdf.libraries.install.clones.sh /scratch/$USER/cgenie.muffin-$clone/netcdf.libraries.install.clones.sh
-chmod +x /scratch/$USER/cgenie.muffin-$clone/netcdf.libraries.install.clones.sh
 ./netcdf.libraries.install.clones.sh $clone
 # return home
 cd /home/$USER/
