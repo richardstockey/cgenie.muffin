@@ -7,7 +7,7 @@ if [ $# -ne 1 ]; then
 fi
 
 clone=$1
-base_dir="mainfs/scratch/rgs1e22/cgenie.muffin-$clone"
+base_dir="/mainfs/scratch/rgs1e22/cgenie.muffin-$clone"
 
 if [ ! -d "$base_dir" ]; then
     echo "Directory $base_dir does not exist."
