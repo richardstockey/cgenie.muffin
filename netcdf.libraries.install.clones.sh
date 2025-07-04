@@ -15,7 +15,7 @@ module load gcc/6.4.0
 module load gnumake
 
 ### Install netcdf-4.6.1 ###
-wget https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.6.1.tar.gz
+# wget https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.6.1.tar.gz # Already included in Rich's muffin due to node connectivity issues
 tar xzf v4.6.1.tar.gz
 cd netcdf-c-4.6.1
 ./configure --prefix=$base_dir --disable-netcdf-4 --disable-dap
@@ -25,7 +25,7 @@ make install
 cd ..
 
 ### Install netcdf-cxx-4.2 ###
-wget https://downloads.unidata.ucar.edu/netcdf-cxx/4.2/netcdf-cxx-4.2.tar.gz
+# wget https://downloads.unidata.ucar.edu/netcdf-cxx/4.2/netcdf-cxx-4.2.tar.gz # Already included in Rich's muffin due to node connectivity issues
 tar xzf netcdf-cxx-4.2.tar.gz
 cd netcdf-cxx-4.2
 export CPPFLAGS=-I$base_dir/include
@@ -37,7 +37,7 @@ make install
 cd ..
 
 ### Install netcdf-fortran-4.4.4 ###
-wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.4.4.tar.gz
+# wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.4.4.tar.gz # Already included in Rich's muffin due to node connectivity issues
 tar xzf v4.4.4.tar.gz
 cd netcdf-fortran-4.4.4
 export LD_LIBRARY_PATH=$base_dir/lib
