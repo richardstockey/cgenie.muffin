@@ -10,7 +10,7 @@ set -e
 
 # Get arguments
 BASE_EXP_NAME="$1"
-USER_CONFIG_DIR="$2"
+USER_CONFIG_SUB_DIR="$2"
 USER_CONFIG_BASENAME="$3"
 FINAL_LEN="$4"
 FINAL_EXP_NAME="$5"
@@ -21,8 +21,10 @@ if [ -z "$USER_CONFIG_BASENAME" ] || [ -z "$USER_CONFIG_DIR" ]; then
   exit 1
 fi
 
+USER_CONFIG_DIR="$HOME/cgenie.muffin/genie-userconfigs/$USER_CONFIG_SUB_DIR"
+
 # Full path to user config (with or without .config)
-USER_CONFIG_PATH="$HOME/cgenie.muffin/genie-userconfigs/$USER_CONFIG_DIR/$USER_CONFIG_BASENAME"
+USER_CONFIG_PATH="$USER_CONFIG_DIR/$USER_CONFIG_BASENAME"
 if [ ! -f "$USER_CONFIG_PATH" ]; then
   if [ -f "${USER_CONFIG_PATH}.config" ]; then
     USER_CONFIG_PATH="${USER_CONFIG_PATH}.config"
