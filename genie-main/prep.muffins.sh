@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Usage:
-# ./prep.muffins.sh <base_user_config_filename> <user_config_dir> <base_exp_name> <chunk_len> <final_exp_name> <final_len>
+# ./prep.muffins.sh <base_exp_name> <user_config_dir> <base_user_config_filename> <chunk_len> <final_exp_name> <final_len>
 
 set -e
 
 # Get arguments
-USER_CONFIG_BASENAME="$1"
+BASE_EXP_NAME="$1"
 USER_CONFIG_DIR="$2"
-BASE_EXP_NAME="$3"
+USER_CONFIG_BASENAME="$3"
 CHUNK_LEN="$4"
 FINAL_EXP_NAME="$5"
 FINAL_LEN="$6"
