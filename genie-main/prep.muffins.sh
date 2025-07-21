@@ -39,7 +39,10 @@ CHUNKS_DIR="$USER_CONFIG_DIR/$CHUNK_DIR_NAME"
 mkdir -p "$CHUNKS_DIR"
 
 # Read full config into array
-mapfile -t CONFIG_LINES < "$USER_CONFIG_PATH"
+CONFIG_LINES=()
+while IFS= read -r line; do
+  CONFIG_LINES+=("$line")
+done < "$USER_CONFIG_PATH"
 
 # Find insertion point (line containing "# --- END ---" or similar)
 END_INDEX=-1
