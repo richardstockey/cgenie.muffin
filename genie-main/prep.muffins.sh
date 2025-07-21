@@ -19,7 +19,7 @@ if [ -z "$USER_CONFIG_BASENAME" ] || [ -z "$USER_CONFIG_DIR" ]; then
 fi
 
 # Full path to user config (with or without .config)
-USER_CONFIG_PATH="$USER_CONFIG_DIR/$USER_CONFIG_BASENAME"
+USER_CONFIG_PATH="$HOME/cgenie.muffin/genie-userconfigs/$USER_CONFIG_DIR/$USER_CONFIG_BASENAME"
 if [ ! -f "$USER_CONFIG_PATH" ]; then
   if [ -f "${USER_CONFIG_PATH}.config" ]; then
     USER_CONFIG_PATH="${USER_CONFIG_PATH}.config"
