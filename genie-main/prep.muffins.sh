@@ -55,13 +55,7 @@ if [ "$END_INDEX" -eq -1 ]; then
 fi
 
 # Remove any existing bg_par_misc_t_start lines
-NEW_CONFIG_LINES=()
-for line in "${CONFIG_LINES[@]}"; do
-  if [[ ! "$line" =~ bg_par_misc_t_start ]]; then
-    NEW_CONFIG_LINES+=("$line")
-  fi
-done
-CONFIG_LINES=("${NEW_CONFIG_LINES[@]}")
+CONFIG_LINES=( "${CONFIG_LINES[@]/bg_par_misc_t_start*/}" )
 
 # Total run length
 TOTAL_LEN=$((FINAL_LEN))
