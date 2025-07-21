@@ -37,10 +37,10 @@ mkdir -p "$CHUNKS_DIR"
 # Read full config into array
 mapfile -t CONFIG_LINES < "$USER_CONFIG_PATH"
 
-# Find insertion point (line containing "# --- END ---")
+# Find insertion point (line containing "# --- END ---" or similar)
 END_INDEX=-1
 for i in "${!CONFIG_LINES[@]}"; do
-  if [[ "${CONFIG_LINES[$i]}" =~ "# --- END" ]]; then
+  if [[ "${CONFIG_LINES[$i]}" =~ "# -+ END" ]]; then
     END_INDEX="$i"
     break
   fi
