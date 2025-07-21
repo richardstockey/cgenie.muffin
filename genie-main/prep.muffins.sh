@@ -1,5 +1,8 @@
 #!/bin/bash
-
+# prep.muffins.sh
+# Splits a user config into multiple chunks with incremental start years.
+# For use with cGENIE SLURM runs or long experiments.
+#
 # Usage:
 # ./prep.muffins.sh <base_exp_name> <user_config_dir> <base_user_config_filename> <final_len> <final_exp_name> <chunk_len>
 
@@ -52,7 +55,13 @@ if [ "$END_INDEX" -eq -1 ]; then
 fi
 
 # Remove any existing bg_par_misc_t_start lines
-CONFIG_LINES=( "${CONFIG_LINES[@]/bg_par_misc_t_start*/}" )
+NEW_CONFIG_LINES=()
+for line in "${CONFIG_LINES[@]}"; do
+  if [[ ! "$line" =~ bg_par_misc_t_start ]]; then
+    NEW_CONFIG_LINES+=("$line")
+  fi
+done
+CONFIG_LINES=("${NEW_CONFIG_LINES[@]}")
 
 # Total run length
 TOTAL_LEN=$((FINAL_LEN))
