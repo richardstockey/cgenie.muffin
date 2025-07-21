@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Usage:
-# ./prep.muffins.sh <base_exp_name> <user_config_dir> <base_user_config_filename> <chunk_len> <final_exp_name> <final_len>
+# ./prep.muffins.sh <base_exp_name> <user_config_dir> <base_user_config_filename> <final_len> <final_exp_name> <chunk_len>
 
 set -e
 
@@ -9,9 +9,9 @@ set -e
 BASE_EXP_NAME="$1"
 USER_CONFIG_DIR="$2"
 USER_CONFIG_BASENAME="$3"
-CHUNK_LEN="$4"
+FINAL_LEN="$4"
 FINAL_EXP_NAME="$5"
-FINAL_LEN="$6"
+CHUNK_LEN="$6"
 
 if [ -z "$USER_CONFIG_BASENAME" ] || [ -z "$USER_CONFIG_DIR" ]; then
   echo "❌ ERROR: Missing arguments. Please provide at least <base_user_config_filename> and <user_config_dir>."
