@@ -16,7 +16,7 @@ FINAL_LEN="$4"
 FINAL_EXP_NAME="$5"
 CHUNK_LEN="$6"
 
-if [ -z "$USER_CONFIG_BASENAME" ] || [ -z "$USER_CONFIG_DIR" ]; then
+if [ -z "$USER_CONFIG_BASENAME" ] || [ -z "$USER_CONFIG_SUB_DIR" ]; then
   echo "❌ ERROR: Missing arguments. Please provide at least <base_user_config_filename> and <user_config_dir>."
   exit 1
 fi
