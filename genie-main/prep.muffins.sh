@@ -1,77 +1,94 @@
 #!/bin/bash
 
-# === Parse arguments or prompt ===
+# Usage:
+# ./prep.muffins.sh <base_user_config_filename> <user_config_dir> <base_exp_name> <chunk_len> <final_exp_name> <final_len>
 
-if [ $# -lt 6 ]; then
-  read -p "Base config name (#1): " base_config
-  read -p "User config directory (#2): " user_config_dir
-  read -p "User config filename (#3): " user_config_file
-  read -p "Total run length in model years (#4): " total_years
-  read -p "Output subdirectory name (#5): " output_subdir
-  read -p "Chunk length in model years (#6): " chunk_length
-else
-  base_config=$1
-  user_config_dir=$2
-  user_config_file=$3
-  total_years=$4
-  output_subdir=$5
-  chunk_length=$6
-fi
+set -e
 
-# === Validate input config file ===
+# Get arguments
+USER_CONFIG_BASENAME="$1"
+USER_CONFIG_DIR="$2"
+BASE_EXP_NAME="$3"
+CHUNK_LEN="$4"
+FINAL_EXP_NAME="$5"
+FINAL_LEN="$6"
 
-input_file="${user_config_dir}/${user_config_file}"
-
-if [ ! -e "$input_file" ]; then
-  echo "❌ ERROR: Input file does not exist: $input_file"
-  exit 1
-elif [ -d "$input_file" ]; then
-  echo "❌ ERROR: Input path is a directory, not a file: $input_file"
+if [ -z "$USER_CONFIG_BASENAME" ] || [ -z "$USER_CONFIG_DIR" ]; then
+  echo "❌ ERROR: Missing arguments. Please provide at least <base_user_config_filename> and <user_config_dir>."
   exit 1
 fi
 
-# === Prepare output directory ===
-
-output_dir="${user_config_dir}/${output_subdir}"
-mkdir -p "$output_dir"
-
-# === Extract start year (or default to 0) ===
-
-initial_start=$(grep -E '^bg_par_misc_t_start=' "$input_file" | cut -d= -f2 | tr -d '[:space:]')
-if [ -z "$initial_start" ]; then
-  initial_start=0
+# Full path to user config (with or without .config)
+USER_CONFIG_PATH="$USER_CONFIG_DIR/$USER_CONFIG_BASENAME"
+if [ ! -f "$USER_CONFIG_PATH" ]; then
+  if [ -f "${USER_CONFIG_PATH}.config" ]; then
+    USER_CONFIG_PATH="${USER_CONFIG_PATH}.config"
+  else
+    echo "❌ ERROR: User config file not found: $USER_CONFIG_PATH"
+    exit 1
+  fi
 fi
 
-# === Number of chunks ===
+# Output chunks directory (inside user_config_dir, named after base config file)
+CHUNK_DIR_NAME="${USER_CONFIG_BASENAME}"
+CHUNKS_DIR="$USER_CONFIG_DIR/$CHUNK_DIR_NAME"
+mkdir -p "$CHUNKS_DIR"
 
-num_chunks=$(( (total_years + chunk_length - 1) / chunk_length ))
+# Read full config into array
+mapfile -t CONFIG_LINES < "$USER_CONFIG_PATH"
 
-echo "Preparing $num_chunks chunks from: $input_file"
-echo "Output will be written to: $output_dir"
-echo "Initial model year: $initial_start, chunk length: $chunk_length"
-
-# === Loop to generate chunked configs ===
-
-for (( i=1; i<=num_chunks; i++ )); do
-  start_year=$(( initial_start + (i - 1) * chunk_length ))
-  chunk_file="${output_dir}/${user_config_file}.${i}.chunk"
-
-  awk -v sy="$start_year" -v i="$i" -v n="$num_chunks" -v cl="$chunk_length" '
-    BEGIN {
-      insert_block = "# --- START YEAR  ---------------------------------------------   # added by prep.muffins.sh\n"
-      insert_block = insert_block "bg_par_misc_t_start=" sy "                                         # added by prep.muffins.sh\n"
-      insert_block = insert_block "# This is chunk " i " of " n ". Start year = " sy ". Chunk length = " cl "   # added by prep.muffins.sh"
-    }
-    # Remove any existing bg_par_misc_t_start line
-    /^bg_par_misc_t_start=/ { next }
-    # Insert before the END marker
-    /^# *--- *END/ {
-      print insert_block
-    }
-    { print }
-  ' "$input_file" > "$chunk_file"
-
-  echo "  ✅ Created chunk $i → $chunk_file"
+# Find insertion point (line containing "# --- END ---")
+END_INDEX=-1
+for i in "${!CONFIG_LINES[@]}"; do
+  if [[ "${CONFIG_LINES[$i]}" =~ "# --- END" ]]; then
+    END_INDEX="$i"
+    break
+  fi
 done
 
-echo "🎉 All $num_chunks chunked configs written to: $output_dir"
+if [ "$END_INDEX" -eq -1 ]; then
+  echo "❌ ERROR: Could not find '# --- END ---' in config file."
+  exit 1
+fi
+
+# Remove any existing bg_par_misc_t_start lines
+CONFIG_LINES=( "${CONFIG_LINES[@]/bg_par_misc_t_start*/}" )
+
+# Total run length
+TOTAL_LEN=$((FINAL_LEN))
+CHUNK_LEN_INT=$((CHUNK_LEN))
+NUM_CHUNKS=$((TOTAL_LEN / CHUNK_LEN_INT))
+if (( TOTAL_LEN % CHUNK_LEN_INT != 0 )); then
+  NUM_CHUNKS=$((NUM_CHUNKS + 1))
+fi
+
+START_YEAR=0
+for CHUNK_INDEX in $(seq 1 "$NUM_CHUNKS"); do
+  THIS_LEN=$CHUNK_LEN_INT
+  if (( CHUNK_INDEX == NUM_CHUNKS )); then
+    REMAINING=$((TOTAL_LEN - (CHUNK_LEN_INT * (NUM_CHUNKS - 1))))
+    THIS_LEN=$REMAINING
+  fi
+
+  CHUNK_EXP_NAME="${FINAL_EXP_NAME}.${CHUNK_INDEX}.chunk"
+  CHUNK_FILE="$CHUNKS_DIR/$CHUNK_EXP_NAME"
+
+  {
+    for ((i=0; i<END_INDEX; i++)); do
+      echo "${CONFIG_LINES[$i]}"
+    done
+
+    echo "# --- START YEAR ---------------------------------------------  # added by prep.muffins.sh"
+    echo "bg_par_misc_t_start = $START_YEAR                               # added by prep.muffins.sh"
+
+    for ((i=END_INDEX; i<${#CONFIG_LINES[@]}; i++)); do
+      echo "${CONFIG_LINES[$i]}"
+    done
+
+    echo "# Run chunk $CHUNK_INDEX of $NUM_CHUNKS; duration = $THIS_LEN, start = $START_YEAR  # added by prep.muffins.sh"
+  } > "$CHUNK_FILE"
+
+  echo "✅ Wrote chunk: $CHUNK_FILE (duration: $THIS_LEN, start year: $START_YEAR)"
+
+  START_YEAR=$((START_YEAR + THIS_LEN))
+done
