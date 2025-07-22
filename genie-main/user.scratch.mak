@@ -2,7 +2,7 @@
 #
 #          === PLEASE MAKE YOUR EDITS IN THIS FILE ===
 #
-# These edits may include the name of your Fortran or C compiler,
+# These edits may include the name of your Fortran or C compiler, 
 # the location of your version of the NetCDF libraries.
 #
 # Please note that in addition to editing this file, variables can be
@@ -14,7 +14,7 @@
 # additions, e.g.:
 #       make GENIE_LDFLAGS=-L/path/to/mylibs
 # LDFLAGS is then seeded with GENIE_LDFLAGS--this is done
-# because command line overrides are immutable.
+# because command line overrides are immutable. 
 #
 # (genie_example.job uses the command-line override machanism to
 # pass compile-time configuration options through to makefile.arc
@@ -23,8 +23,8 @@
 # ====================================================================
 
 ## === Compre the values below to those in user.sh ===
-GENIE_ROOT        = /home/rgs1e22/cgenie.muffin
-OUT_DIR           = /home/rgs1e22/cgenie_output
+GENIE_ROOT        = /scratch/rgs1e22/cgenie.muffin
+OUT_DIR           = /scratch/rgs1e22/cgenie_output
 RUNTIME_ROOT      = ../../cgenie.muffin
 
 # === Fortran compiler (ifc/ifort/f90/pgf90) ===
@@ -90,6 +90,6 @@ MODEXT=mod
 ### Ben Mac Pro ###
 #NETCDF_DIR=/opt/local
 ### Iridis/Lyceum (should work for Red Hat HPC facilities generally) ###
-NETCDF_DIR=/home/rgs1e22
+NETCDF_DIR=/scratch/rgs1e22/cgenie.muffin
 
 NETCDF_NAME=netcdf

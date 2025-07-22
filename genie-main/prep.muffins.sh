@@ -34,7 +34,7 @@ if [ ! -f "$USER_CONFIG_PATH" ]; then
   fi
 fi
 
-# Output chunks directory (inside user_config_dir, named after base config file)
+# Output chunks directory (inside user_config_dir, named after user config file)
 CHUNKS_DIR="$USER_CONFIG_DIR/$CHUNK_DIR_NAME"
 mkdir -p "$CHUNKS_DIR"
 
@@ -77,7 +77,7 @@ for CHUNK_INDEX in $(seq 1 "$NUM_CHUNKS"); do
     THIS_LEN=$REMAINING
   fi
 
-  CHUNK_EXP_NAME="${USER_CONFIG_BASENAME}.${CHUNK_INDEX}.chunk"
+  CHUNK_EXP_NAME="${CHUNK_DIR_NAME}.${CHUNK_INDEX}.chunk"
   CHUNK_FILE="$CHUNKS_DIR/$CHUNK_EXP_NAME"
 
   {

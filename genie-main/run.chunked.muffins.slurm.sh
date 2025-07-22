@@ -14,11 +14,12 @@ CHUNK_DIR_NAME="$4"
 USER_CONFIG_BASENAME="$5"
 FINAL_LEN="$6"
 CHUNK_LEN="$7"
-FIRST_RESTART="$8"  # optional
+FIRST_RESTART="${8:-}"  # optional
 
 # Derived paths
 USER_CONFIG_BASE_PATH="$HOME/cgenie.muffin/genie-userconfigs/$USER_CONFIG_SUB_DIR"
 CHUNK_DIR="$USER_CONFIG_BASE_PATH/$CHUNK_DIR_NAME"
+CHUNK_DIR_SUB_PATH="$USER_CONFIG_SUB_DIR/$CHUNK_DIR_NAME"
 NUM_CHUNKS=$(( (FINAL_LEN + CHUNK_LEN - 1) / CHUNK_LEN ))
 
 echo "🌊 Running $NUM_CHUNKS chunked cGENIE experiments via SLURM"
@@ -40,7 +41,7 @@ for CHUNK_INDEX in $(seq 1 "$NUM_CHUNKS"); do
     if (( CHUNK_INDEX == 1 )); then
         RESTART_ARG="$FIRST_RESTART"
     else
-        PREV_EXP="${BASE_EXP_NAME}.$((CHUNK_INDEX - 1))"
+        PREV_EXP="${USER_CONFIG_BASENAME}.$((CHUNK_INDEX - 1)).chunk"
         RESTART_ARG="$PREV_EXP"
     fi
 
@@ -48,25 +49,29 @@ for CHUNK_INDEX in $(seq 1 "$NUM_CHUNKS"); do
     SBATCH_SCRIPT="$HOME/cgenie.jobs/muffin-to-go-${EXP_NAME}.sbatch"
     LOG_FILE="$HOME/cgenie_log/cGENIE.output_${EXP_NAME}_$(date '+%F_%H.%M').log"
 
-    echo "#!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --time=48:00:00
-#SBATCH --job-name=$EXP_NAME
-#SBATCH --mail-user=$EMAIL
-#SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --output=$LOG_FILE
+    # Generate the sbatch script
+{
+  echo "#!/bin/bash"
+  echo "#SBATCH --nodes=1"
+  echo "#SBATCH --time=48:00:00"
+  echo "#SBATCH --job-name=$EXP_NAME"
+  echo "#SBATCH --mail-user=$EMAIL"
+  echo "#SBATCH --mail-type=BEGIN,END,FAIL"
+  echo "#SBATCH --output=$LOG_FILE"
+  echo
+  echo "module load gcc/6.4.0"
+  echo "module load gnumake"
+  echo "export LD_LIBRARY_PATH=\$HOME/lib"
+  echo "cd \$HOME/cgenie.muffin/genie-main"
+  echo "make cleanall &> /dev/null"
+  if [ -n "$RESTART_ARG" ]; then
+    echo "./runmuffin.sh $BASE_EXP_NAME $CHUNK_DIR_SUB_PATH $USER_CONFIG_CHUNK $RUNTIME $RESTART_ARG"
+  else
+    echo "./runmuffin.sh $BASE_EXP_NAME $CHUNK_DIR_SUB_PATH $USER_CONFIG_CHUNK $RUNTIME"
+  fi
+} > "$SBATCH_SCRIPT"
 
-module load gcc/6.4.0
-module load gnumake
-
-export LD_LIBRARY_PATH=\$HOME/lib
-
-cd \$HOME/cgenie.muffin/genie-main
-
-make cleanall &> /dev/null
-./runmuffin.sh $EXP_NAME $USER_CONFIG_SUBDIR $CHUNK_DIR_NAME/$USER_CONFIG_CHUNK $RUNTIME $RESTART_ARG
-" > "$SBATCH_SCRIPT"
-
+    # Submit with optional dependency
     CMD="sbatch"
     if [ -n "$PREV_JOBID" ]; then
         CMD="$CMD --dependency=afterok:$PREV_JOBID"
