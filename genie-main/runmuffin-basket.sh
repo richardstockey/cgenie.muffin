@@ -1,23 +1,23 @@
 #!/bin/bash -e
 #
 #####################################################################
-### SCIPT TO RUN ./RUNMUFFIN.SH ON REDHAT HPC #######################
+### SCIPT TO RUN ./runmuffin.scratch.SH ON REDHAT HPC #######################
 ### WITH AUTOMATIC RESTARTS #########################################
 #####################################################################
 
 # designing self-restarting ensemble loops...
 # begin with n (n<40) directories of cgenie jobs
-# supply primary directory to runmuffin-basket-test.sh
+# supply primary directory to runmuffin.scratch-basket-test.sh
 # within that, have n (n<40) directories of cgenie jobs
 # within those, have user-config files (same number for each directory in theory, might not matter)
 
-# runmuffin-basket.new command should look like
-# ./runmuffin-basket.new.sh [email@uni.ac.uk] [primary-directory] [model-years-per-job]
+# runmuffin.scratch-basket.new command should look like
+# ./runmuffin.scratch-basket.new.sh [email@uni.ac.uk] [primary-directory] [model-years-per-job]
 
 # what shell script will need to do
 # - load dependencies
 # - read contents of primary directory
-# – use this to establish names of recurring jobs (directory called in runmuffin)
+# – use this to establish names of recurring jobs (directory called in runmuffin.scratch)
 # – [all user-configs will have the same name as the recurring jobs, but with a number at the end]
 # – identify first job for each of n directories as job in directory with appendix `-1`
 # – generate .sbatch file with all initial n jobs in it
@@ -32,7 +32,7 @@
 # still runs on 40 cores
 # just only needs 20 versions of genie...
 # NOTE - this only works for 1 run at a time right now (NOT for restarts...)
-# 20241021 – runmuffin-basket.new3.sh is renamed to runmuffin-basket.sh for new cgenie fork.
+# 20241021 – runmuffin.scratch-basket.new3.sh is renamed to runmuffin.scratch-basket.sh for new cgenie fork.
 # also redirecting slurm outputs to separate "slurm" folder in home directory rather than cgenie.muffin/genie-main (should have done earlier)
 module load gcc/6.4.0
 module load gnumake
@@ -84,15 +84,15 @@ do
 
 if [ $iteration -eq 1 ]; then # first experiment doesnt necessarily start from a restart (need to build in this option though)
 if [ $i -le 20 ]; then # no waiting for first 20 runs
-printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 else # wait 6 mins (recall five occassionally not being quite enough) for second 20 runs
 j=$((i-20))
-printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$j/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$j/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
 else # subsequent experiments all start from a restart
-printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
 i=$((i+1))
