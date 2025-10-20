@@ -84,15 +84,15 @@ do
 
 if [ $iteration -eq 1 ]; then # first experiment doesnt necessarily start from a restart (need to build in this option though)
 if [ $i -le 20 ]; then # no waiting for first 20 runs
-printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 else # wait 6 mins (recall five occassionally not being quite enough) for second 20 runs
 j=$((i-20))
-printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$j/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$j/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
 else # subsequent experiments all start from a restart
-printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/netcdf_libs/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/lib; export LD_LIBRARY_PATH; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
 i=$((i+1))
