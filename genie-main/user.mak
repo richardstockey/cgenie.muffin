@@ -23,8 +23,8 @@
 # ====================================================================
 
 ## === Compre the values below to those in user.sh ===
-GENIE_ROOT        = /home/rgs1e22/cgenie.muffin
-OUT_DIR           = /home/rgs1e22/cgenie_output
+GENIE_ROOT        = /home/$USER/cgenie.muffin
+OUT_DIR           = /home/$USER/cgenie_output
 RUNTIME_ROOT      = ../../cgenie.muffin
 
 # === Fortran compiler (ifc/ifort/f90/pgf90) ===
@@ -90,6 +90,6 @@ MODEXT=mod
 ### Ben Mac Pro ###
 #NETCDF_DIR=/opt/local
 ### Iridis/Lyceum (should work for Red Hat HPC facilities generally) ###
-NETCDF_DIR=/home/rgs1e22
+NETCDF_DIR=/home/$USER
 
 NETCDF_NAME=netcdf

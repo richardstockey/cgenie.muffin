@@ -12,7 +12,7 @@ echo ""
 # CHANGE THIS FOR INSTALLATIONS OTHER THAN IN $HOME
 # SET THE SAME AS IN user.mak AND user.sh
 # set home directory
-HOMEDIR=/home/rgs1e22/
+HOMEDIR=/home/$USER/
 #####################################################################
 # set output directory
 OUTPUTDIR=$HOMEDIR/cgenie_output
