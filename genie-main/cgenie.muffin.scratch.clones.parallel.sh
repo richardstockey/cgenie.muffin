@@ -1,7 +1,7 @@
 #!/bin/bash -e
 #
 #####################################################################
-### SCIPT TO DOWNLOAD CLONE cgenie.muffin DIRECTORY 
+### SCIPT TO DOWNLOAD CLONE cgenie.muffin DIRECTORY
 ### N TIMES TO SCRATCH ON REDHAT HPC
 #####################################################################
 
@@ -9,15 +9,17 @@
 # input variable $2 number of times to clone
 # should be run like: ./cgenie.muffin.scratch.clones.parallel.sh richardstockey 20
 # will need to change permissions using chmod +x ~/cgenie.muffin/genie-main/cgenie.muffin.scratch.clones.parallel.sh
-# RGS updatesd 20241021 – add in scratch branch as what we are cloning... could make this an option in future if we wanted. 
-module load gcc/6.4.0
-module load gnumake
-module load git
+# RGS updatesd 20241021 – add in scratch branch as what we are cloning... could make this an option in future if we wanted.
+module load gcc/13.2.0
 
-[ -d '/scratch/rgs1e22/cgenie.muffin' ] && rm -rf /scratch/rgs1e22/cgenie.muffin
+
+[ -d '/scratch/$USER/cgenie.muffin' ] && rm -rf /scratch/$USER/cgenie.muffin
 git clone --branch scratch https://github.com/$1/cgenie.muffin/ /scratch/$USER/cgenie.muffin
 
-# for all batch files we start with the same code here... 
+cp /scratch/$USER/cgenie.muffin/genie-main/user.scratch.mak /scratch/$USER/cgenie.muffin/genie-main/user.mak
+cp /scratch/$USER/cgenie.muffin/genie-main/user.scratch.sh /scratch/$USER/cgenie.muffin/genie-main/user.sh
+
+# for all batch files we start with the same code here...
 printf "#!/bin/sh
 
 #SBATCH --nodes=1                # Number of nodes requested
@@ -25,11 +27,9 @@ printf "#!/bin/sh
 #SBATCH --time=1:00:00
 #SBATCH --mail-user=r.g.stockey@soton.ac.uk
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --output=/home/rgs1e22/cgenie.jobs/cgenie.muffin.scratch.clones.parallel.out
+#SBATCH --output=/home/$USER/cgenie.jobs/cgenie.muffin.scratch.clones.parallel.out
 
-module load gcc/6.4.0
-module load gnumake
-module load git
+module load gcc/13.2.0
 
 LD_LIBRARY_PATH=$HOME/lib
 export LD_LIBRARY_PATH
@@ -47,9 +47,9 @@ printf "(
 cp -R /scratch/$USER/cgenie.muffin /scratch/$USER/cgenie.muffin-$clone
 # change names in cgenie.muffin-x
 cd /scratch/$USER/cgenie.muffin-$clone
-grep -l -r 'cgenie.muffin' --exclude-dir='.git' | xargs sed -i 's/cgenie.muffin/cgenie.muffin-$clone/g'
-cd /home/$USER/genie.install.stuff
-./netcdf.libraries.install.new.sh $clone
+grep -l -r 'cgenie.muffin' --exclude-dir='.git' --exclude='netcdf.libraries.install.clones.sh' | xargs sed -i 's/cgenie.muffin/cgenie.muffin-$clone/g'
+cd /scratch/$USER/cgenie.muffin-$clone
+./netcdf.libraries.install.clones.sh $clone
 # return home
 cd /home/$USER/
 # say we're done with that clone
