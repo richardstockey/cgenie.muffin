@@ -316,6 +316,7 @@ ifeq ($(F77),gfortran)
   F77FLAGS += -x f77-cpp-input -ffixed-line-length-80
   F90FLAGS += -x f95-cpp-input -ffree-line-length-none
   FFLAGS += -Wall -fimplicit-none
+  FFLAGS += -fallow-argument-mismatch
 ###  FFLAGS += -fopenmp
 ###  LDFLAGS += -static
 ###  LDFLAGS += -fopenmp
@@ -323,7 +324,7 @@ ifeq ($(F77),gfortran)
   #       => error (-fallow-argument-mismatch turns this is a warning) (cannot then have -pedantic) [error occurs in outm_netcdf.F]
   # first get gfortran major version number
   FVER=$(shell gfortran -dumpversion)
-###  add flag if version == 10 (will worry later when version 11 comes out ...)
+###  add flag if version == 10 (will worry later when version 11 comes out ...); RGS NOTE – in RGS fork we now do this by default to avoid errors on IRIDIS6
 ###  ifeq ($(FVER),10)
 ###    FFLAGS += -fallow-argument-mismatch
 ###  endif
