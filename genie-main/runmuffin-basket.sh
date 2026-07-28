@@ -42,34 +42,7 @@
 
 # ensure all key software is loaded
 module load gcc/13.2.0
-export CFLAGS="-std=c11 -D_GNU_SOURCE"
-export FC=gfortran
-export CC=gcc
 
-# ensure python 2 setup correctly
-export PYTHON2_HOME=$HOME/python2.7
-export PATH="$PYTHON2_HOME/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-
-# Set base paths for your NetCDF installations
-export NETCDF_C_HOME=$HOME
-export NETCDF_CXX_HOME=$HOME
-export NETCDF_FORTRAN_HOME=$HOME
-
-# Include headers for compilation
-export CPPFLAGS="-I$NETCDF_C_HOME/include -I$NETCDF_CXX_HOME/include -I$NETCDF_FORTRAN_HOME/include"
-
-# Linker flags for libraries
-export LDFLAGS="-L$NETCDF_C_HOME/lib -L$NETCDF_CXX_HOME/lib -L$NETCDF_FORTRAN_HOME/lib"
-
-# Runtime library path for dynamic linking
-export LD_LIBRARY_PATH="$NETCDF_C_HOME/lib:$NETCDF_CXX_HOME/lib:$NETCDF_FORTRAN_HOME/lib:$LD_LIBRARY_PATH"
-
-# Optional: add binaries to PATH if you want to use netcdf tools directly
-export PATH="$NETCDF_C_HOME/bin:$NETCDF_CXX_HOME/bin:$NETCDF_FORTRAN_HOME/bin:$PATH"
-
-LD_LIBRARY_PATH=$HOME/lib
-export LD_LIBRARY_PATH
 short_name=$(echo $2 | sed 's:.*/::')
 # Assume all experiments in ensemble have same number of iterations
 # just check the first directory alphabetically
@@ -113,15 +86,15 @@ do
 
 if [ $iteration -eq 1 ]; then # first experiment doesnt necessarily start from a restart (need to build in this option though)
 if [ $i -le 20 ]; then # no waiting for first 20 runs
-printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/lib; export LD_LIBRARY_PATH; chmod +x runmuffin.scratch.sh; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/$USER/cgenie.muffin-$i/lib; export LD_LIBRARY_PATH; export PATH=/iridisfs/scratch/$USER/cgenie.muffin-$i/bin:$PATH; chmod +x runmuffin.scratch.sh; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 else # wait 6 mins (recall five occassionally not being quite enough) for second 20 runs
 j=$((i-20))
-printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$j/lib; export LD_LIBRARY_PATH; chmod +x runmuffin.scratch.sh; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$j/genie-main; sleep 360; make cleanall; LD_LIBRARY_PATH=/scratch/$USER/cgenie.muffin-$j/lib; export LD_LIBRARY_PATH; export PATH=/iridisfs/scratch/$USER/cgenie.muffin-$i/bin:$PATH; chmod +x runmuffin.scratch.sh; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
 else # subsequent experiments all start from a restart
-printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/rgs1e22/cgenie.muffin-$i/lib; export LD_LIBRARY_PATH; chmod +x runmuffin.scratch.sh; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
+printf "(cd /scratch/$USER/cgenie.muffin-$i/genie-main; make cleanall; LD_LIBRARY_PATH=/scratch/$USER/cgenie.muffin-$i/lib; export LD_LIBRARY_PATH; export PATH=/iridisfs/scratch/$USER/cgenie.muffin-$i/bin:$PATH; chmod +x runmuffin.scratch.sh; ./runmuffin.scratch.sh $line $2/$line ${line}-${iteration}.config $3 ${line}-$((iteration - 1)).config &> ~/cgenie_log/muffin-basket-$(date '+%F_%H.%M')-${line}-${iteration}.log) &
 "  >> ~/cgenie.jobs/muffin-basket-$short_name-$iteration.sbatch
 fi
 i=$((i+1))
@@ -141,7 +114,7 @@ then
 # now add to the script that we want to wait for all background jobs to finish before continuing
 printf '
 
-ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
+ready_clones=$(find /scratch/$USER -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
 while [ $ready_clones -lt $i ]
 do
 echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
@@ -162,7 +135,7 @@ done
 # if not, wait a minute and check again...
 # don't submit job until there are...
 # NOTE - maybe this should really sit at the top of the sbatch scripts rather than down here??
-#ready_clones=$(find /scratch/rgs1e22 -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
+#ready_clones=$(find /scratch/$USER -mindepth 2 -maxdepth 2 -type d -name "*genie-main" -mmin +2| wc -l)
 #while [ $ready_clones -lt 40 ]
 #do
 #echo "Waiting for free cgenie.muffin-*/genie-main clones to initiate experiments from..."
