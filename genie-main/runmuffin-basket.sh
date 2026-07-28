@@ -34,12 +34,42 @@
 # NOTE - this only works for 1 run at a time right now (NOT for restarts...)
 # 20241021 – runmuffin.scratch-basket.new3.sh is renamed to runmuffin.scratch-basket.sh for new cgenie fork.
 # also redirecting slurm outputs to separate "slurm" folder in home directory rather than cgenie.muffin/genie-main (should have done earlier)
-module load gcc/6.4.0
-module load gnumake
+#!/bin/bash -e
+#
+#####################################################################
+### SCIPT TO RUN ./RUNMUFFIN.SH ON REDHAT HPC #######################
+#####################################################################
+
+# ensure all key software is loaded
+module load gcc/13.2.0
+export CFLAGS="-std=c11 -D_GNU_SOURCE"
+export FC=gfortran
+export CC=gcc
+
+# ensure python 2 setup correctly
+export PYTHON2_HOME=$HOME/python2.7
+export PATH="$PYTHON2_HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+# Set base paths for your NetCDF installations
+export NETCDF_C_HOME=$HOME
+export NETCDF_CXX_HOME=$HOME
+export NETCDF_FORTRAN_HOME=$HOME
+
+# Include headers for compilation
+export CPPFLAGS="-I$NETCDF_C_HOME/include -I$NETCDF_CXX_HOME/include -I$NETCDF_FORTRAN_HOME/include"
+
+# Linker flags for libraries
+export LDFLAGS="-L$NETCDF_C_HOME/lib -L$NETCDF_CXX_HOME/lib -L$NETCDF_FORTRAN_HOME/lib"
+
+# Runtime library path for dynamic linking
+export LD_LIBRARY_PATH="$NETCDF_C_HOME/lib:$NETCDF_CXX_HOME/lib:$NETCDF_FORTRAN_HOME/lib:$LD_LIBRARY_PATH"
+
+# Optional: add binaries to PATH if you want to use netcdf tools directly
+export PATH="$NETCDF_C_HOME/bin:$NETCDF_CXX_HOME/bin:$NETCDF_FORTRAN_HOME/bin:$PATH"
 
 LD_LIBRARY_PATH=$HOME/lib
 export LD_LIBRARY_PATH
-
 short_name=$(echo $2 | sed 's:.*/::')
 # Assume all experiments in ensemble have same number of iterations
 # just check the first directory alphabetically
@@ -61,8 +91,7 @@ printf "#!/bin/sh
 #SBATCH -o "/home/$USER/slurm/$(date +%Y%m%d%H%M%S)-slurm-job.txt"
 
 
-module load gcc/6.4.0
-module load gnumake
+module load gcc/13.2.0
 
 LD_LIBRARY_PATH=$HOME/lib
 export LD_LIBRARY_PATH

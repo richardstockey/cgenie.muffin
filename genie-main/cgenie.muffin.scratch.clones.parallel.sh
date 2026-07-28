@@ -13,7 +13,7 @@
 module load gcc/13.2.0
 
 
-[ -d '/scratch/$USER/cgenie.muffin' ] && rm -rf /scratch/$USER/cgenie.muffin
+[ -d "/scratch/$USER/cgenie.muffin" ] && rm -rf "/scratch/$USER/cgenie.muffin"
 git clone --branch scratch https://github.com/$1/cgenie.muffin/ /scratch/$USER/cgenie.muffin
 
 cp /scratch/$USER/cgenie.muffin/genie-main/user.scratch.mak /scratch/$USER/cgenie.muffin/genie-main/user.mak
